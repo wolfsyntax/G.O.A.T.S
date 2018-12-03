@@ -81,10 +81,10 @@ $query_builder = TRUE;
 */
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'databases.000webhost.com',
-	'username' => 'id1345229_pywizard',
+	'hostname' => 'localhost',
+	'username' => 'pywizard',
 	'password' => 'godtoor',
-	'database' => 'id1345229_mgmf',
+	'database' => 'mgmf',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
