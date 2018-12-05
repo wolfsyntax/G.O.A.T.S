@@ -4,9 +4,14 @@
     <?php $this->load->view('includes/sidebar'); ?>
 
     <main class="col-12 col-md-10 mt-1" role="main">
-      <section class="col-12 bg-dark p-1">        
-      	A
-      </section>
+		<section class="col-12 bg-dark p-1">        
+			A
+		</section>
+		
+		<section>
+
+		
+		</section>      	
 
     </main>
 	</div>

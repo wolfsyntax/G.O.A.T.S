@@ -32,9 +32,19 @@ class Sessions extends CI_Controller {
 	}
 
 	public function index(){
+
+		$data["title"] = "Bootswatch Template";
+		$data["body"] = "template";
+
+		$this->load->view("layouts/application", $data);
+
+	}
+
+	public function logout(){
 		//destroy the whole session
 		$this->session->sess_destroy();
 		redirect(base_url());
 	}
+
 }
 ?>

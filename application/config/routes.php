@@ -69,7 +69,7 @@ $route['profile/security']['POST'] = 'user/confirm_change_pass';
 
 $route['login']['GET'] = 'user/login';
 $route['login']['POST'] = 'user/validate_login';
-$route['logout'] = 'sessions';
+$route['logout'] = 'sessions/logout';
 
 $route['about'] = 'sitemap/about';
 $route['dashboard'] = 'sitemap/dashboard';
@@ -99,3 +99,4 @@ $route['manage/loss']['POST'] = 'goat/record_loss';
 //$route['expense'] = 'financial/index';
 
 //$route['welcome'] = 'sitemap/landing_page';
+$route['template'] = 'sessions';
