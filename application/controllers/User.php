@@ -32,19 +32,19 @@ class User extends CI_Controller {
 		//Model: Singular (ModelName)
 
 //		$this->load->library('form_validation');
-		$this->load->model('User_model');
-//		$this->load->driver('session');
+		$this->load->model("User_model");
+//		$this->load->driver(");
 
-		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'ssl://smtp.googlemail.com';
-		$config['smtp_port'] = 465;
-		$config['smtp_user'] = 'mail.goats@gmail.com';
-		$config['smtp_pass'] = '09365621593';
-		$config['mailtype']	= 'html';
-		$config['charset'] = 'utf-8';
+		$config["protocol"] 	= "smtp";
+		$config["smtp_host"]	= "ssl://smtp.googlemail.com";
+		$config["smtp_port"] 	= 465;
+		$config["smtp_user"] 	= "mail.goats@gmail.com";
+		$config["smtp_pass"] 	= "09365621593";
+		$config["mailtype"]		= "html";
+		$config["charset"] 		= "utf-8";
 
 		$this->email->initialize($config);
-		$this->email->set_newline("\r\n");
+		$this->email->set_newline('\r\n');
 
 		$this->send_email();
 		
@@ -53,15 +53,15 @@ class User extends CI_Controller {
 	public function index()
 	{
 		
-		if($this->session->userdata('username') != ''){
+		if($this->session->userdata("username") != ""){
 			
-			redirect('dashboard');
+			redirect("dashboard");
 
 		}else{
 
-			$data['title'] = 'Home';
-			$data['body'] = 'sitemaps/index';
-			$this->load->view('layouts/application',$data);
+			$data["title"] = "Home";
+			$data["body"] = "sitemaps/index";
+			$this->load->view("layouts/application", $data);
 
 		}
 
@@ -71,10 +71,10 @@ class User extends CI_Controller {
 		
 		if($this->session->userdata('username')){
 			
-			$data['title'] = 'Account Settings';
-			$data['body'] = 'users/edit_profile';
+			$data["title"] = "Account Settings";
+			$data["body"] = "users/edit_profile";
 			
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application", $data);
 
 		}else{
 
@@ -87,28 +87,24 @@ class User extends CI_Controller {
 	public function confirm_change_info(){
 
 		
-		if($this->session->userdata('username')){	
+		if($this->session->userdata("username")){	
 
-			$this->form_validation->set_rules('phone','Mobile number','required|min_length[11]|trim|xss_clean',
-				array(
-					'required' => 'Mobile number is required',
+			$this->form_validation->set_rules("phone", "Mobile number", "required|min_length[11]|trim|xss_clean", array(
+					"required" => "Mobile number is required",
 				)
 			);
 
-			$this->form_validation->set_rules('last_name','Last name','required|min_length[2]|trim|xss_clean',
-				array(
-					'required' => 'Last name is required',
-					'min_length[2]' => 'Last name must contain at least two (2) letters',
+			$this->form_validation->set_rules("last_name", "Last name", "required|min_length[2]|trim|xss_clean", array(
+					"required" => "Last name is required",
+					"min_length[2]" => "Last name must contain at least two (2) letters",
 				)
 			);
 
-
-			$this->form_validation->set_rules('first_name','First name','required|trim|xss_clean',
-				array(
-					'required' => 'First name is required',			)
+			$this->form_validation->set_rules("first_name", "First name", "required|trim|xss_clean",
+				array("required" => "First name is required",)
 			);
 
-			$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
+			$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
 			
 			if ($this->form_validation->run() == FALSE){
 
@@ -117,16 +113,16 @@ class User extends CI_Controller {
 			}else{
 
 				if($this->User_model->confirm_change()){
-					$this->session->set_flashdata('item', '<div class="alert alert-success col-12" role="alert" style="height: 50px;">
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+					$this->session->set_flashdata("item", "<div class='alert alert-success col-12' role='alert' style='height: 50px;'>
+										<button type='button' class='close' data-dismiss='alert' aria-label='Close'>&times;</button>
 										
-										<div class="row">
-											<p><span class="fa fa-check-circle"></span>
+										<div class='row'>
+											<p><span class='fa fa-check-circle'></span>
 						<strong>Success</strong>&emsp;Modified account details.</p>
 										</div>
-									</div>');
+									</div>");
 
-					redirect('dashboard');
+					redirect("dashboard");
 
 				}else{
 
@@ -149,25 +145,25 @@ class User extends CI_Controller {
 
 	public function confirm_change_pass(){
 
-		if($this->session->userdata('username')){
+		if($this->session->userdata("username")){
 
 			$this->form_validation->set_rules(
-				'passwd','Password','required|min_length[6]|trim|xss_clean',
+				"passwd", "Password", "required|min_length[6]|trim|xss_clean",
 				array(
-					'required' => 'Password is required',
-					'min_length[6]' => 'Password must contain atleast six (6) alpha numeric characters'
+					"required" => "Password is required",
+					"min_length[6]" => "Password must contain atleast six (6) alpha numeric characters"
 				)
 			);
 
 			$this->form_validation->set_rules(
-				'conf_passwd','Confirm Password','required|matches[passwd]|xss_clean',
+				"conf_passwd", "Confirm Password", "required|matches[passwd]|xss_clean",
 				array(
-					'required' => 'Password is required',
-					'matches["password"]' => 'Confirmation Password does not match',
+					"required" => "Password is required",
+					"matches['password']" => "Confirmation Password does not match",
 				)
 			);	
 
-			$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
+			$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
 
 			if ($this->form_validation->run() == FALSE){
 
@@ -177,16 +173,16 @@ class User extends CI_Controller {
 
 				if($this->User_model->confirm_change(1)){
 
-					$this->session->set_flashdata('item', '<div class="alert alert-success col-12" role="alert" style="height: 50px;">
-										<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+					$this->session->set_flashdata("item", "<div class='alert alert-success col-12' role='alert' style='height: 50px;'>
+										<button type='button' class='close' data-dismiss='alert' aria-label='Close'>&times;</button>
 										
-										<div class="row">
-											<p><span class="fa fa-check-circle"></span>
+										<div class='row'>
+											<p><span class='fa fa-check-circle'></span>
 						<strong>Success</strong>&emsp;Changing Password</p>
 										</div>
-									</div>');
+									</div>");
 
-					redirect('dashboard');
+					redirect("dashboard");
 
 				}else{
 
@@ -209,16 +205,16 @@ class User extends CI_Controller {
 	{
 
 
-		if($this->session->userdata('username') == ''){
+		if($this->session->userdata("username") == ""){
 			
-			$data['title'] = 'Register';
-			$data['body'] = 'users/register';
+			$data["title"] = "Register";
+			$data["body"] = "users/register";
 
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application",$data);
 
 		}else{
 
-			redirect('dashboard');
+			redirect("dashboard");
 
 		}
 
@@ -230,27 +226,24 @@ class User extends CI_Controller {
 		
 
 		$this->form_validation->set_rules(
-			'email','Email Address','required|valid_email|trim|is_unique[user_account.Email]|xss_clean',
-			array(
-				'required' => '%s is required',
-				'is_unique' => '%s is already taken',
-				'valid_email' => '%s is not valid',
+			"email", "Email Address", "required|valid_email|trim|is_unique[user_account.Email]|xss_clean", array(
+				"required" => "{field} is required",
+				"is_unique" => "{field} is already taken",
+				"valid_email" => "{field} is not valid",
 			)
 		);
 
-		$this->form_validation->set_rules(
-			'username','Username','required|trim|is_unique[user_account.Username]|xss_clean',
+		$this->form_validation->set_rules("username", "Username", "required|trim|is_unique[user_account.Username]|xss_clean",
 			array(
-				'required' => '%s is required',
-				'is_unique' => '%s is already taken',
+				"required" => "{field} is required",
+				"is_unique" => "{field} is already taken",
 			)
 		);
 
-		$this->form_validation->set_rules(
-			'passwd','Password','required|min_length[6]|trim|xss_clean',
+		$this->form_validation->set_rules("passwd", "Password", "required|min_length[6]|trim|xss_clean",
 			array(
-				'required' => 'Password is required',
-				'min_length[6]' => 'Password must contain atleast six (6) alpha numeric characters'
+				"required" => "Password is required",
+				"min_length[6]" => "Password must contain atleast six (6) alpha numeric characters",
 			)
 		);
 
@@ -261,36 +254,32 @@ class User extends CI_Controller {
 #			)
 #		);
 
-		$this->form_validation->set_rules('phone','Mobile number','required|min_length[11]|trim|xss_clean',
+		$this->form_validation->set_rules("phone", "Mobile number", "required|min_length[11]|trim|xss_clean",
 			array(
-				'required' => 'Mobile number is required',
+				"required" => "Mobile number is required",
 			)
 		);
 
-		$this->form_validation->set_rules('last_name','Last name','required|min_length[2]|trim|xss_clean',
-			array(
-				'required' => 'Last name is required',
-				'min_length[2]' => 'Last name must contain at least two (2) letters',
+		$this->form_validation->set_rules("last_name", "Last name", "required|min_length[2]|trim|xss_clean", array(
+				"required" => "Last name is required",
+				"min_length[2]" => "Last name must contain at least two (2) letters",
 			)
 		);
 
-
-		$this->form_validation->set_rules('first_name','First name','required|trim|xss_clean',
-			array(
+		$this->form_validation->set_rules("first_name", "First name", "required|trim|xss_clean", array(
 				'required' => 'First name is required',			)
 		);
 
 
 		$this->form_validation->set_rules(
-			'conf_passwd','Confirm Password','required|matches[passwd]|xss_clean',
-			array(
-				'required' => 'Password is required',
-				'matches["password"]' => 'Confirmation Password does not match',
+			"conf_passwd", "Confirm Password", "required|matches[passwd]|xss_clean", array(
+				"required" => "Password is required",
+				"matches['password']" => "Confirmation Password does not match",
 			)
 		);	
 
 
-		$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
+		$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
 
 		if ($this->form_validation->run() == FALSE){
 
@@ -300,30 +289,34 @@ class User extends CI_Controller {
 
 			if($this->User_model->process_registration()){
 
-				$this->session->set_flashdata('item', '<div class="alert alert-success" role="alert" style="height: 50px;">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+				$this->session->set_flashdata("item", "<div class='alert alert-success' role='alert' style='height: 50px;'>
+									<button type='button' class='close' data-dismiss='alert' aria-label='Close'>&times;</button>
 									
-									<div class="row">
-										<p><span class="fa fa-check-circle"></span>
+									<div class='row'>
+										<p><span class='fa fa-check-circle'></span>
 					<strong>Success</strong>&emsp;Account created</p>
 									</div>
-								</div>');
+								</div>");
 
 
-				$this->email->from('mail.goats@gmail.com','G.O.A.T.S');
+				$this->email->from("mail.goats@gmail.com", "G.O.A.T.S");
 
-				$this->email->to($this->session->userdata('user_email'));
+				$this->email->to($this->session->userdata("user_email"));
 				$this->email->subject("Your account using this email $(this->session->userdata('user_email')), has been created");
-				$this->email->message('<h1>Congratulation!</h1><br/>You are now part of our community. Feel free to use our system<br/><a href="https://www.facebook.com/wolf.syntax">- Wolf Syntax</a>');
+				$this->email->message("<h1>Congratulation!</h1><br/>You are now part of our community. Feel free to use our system<br/><a href='https://www.facebook.com/wolf.syntax'>- Wolf Syntax</a>");
 				
 				if($this->email->send()){
+
 					echo "<script>alert('Email Sent');</script>";
+
 				}else{
+
 					echo "<script>alert('Error: Email Not Sent');</script>";
+
 				}
 				
 
-				redirect('login');
+				redirect("login");
 
 			}else{
 
@@ -344,59 +337,61 @@ class User extends CI_Controller {
 
 
 		//echo validation_errors('<span class="error">', '</span>');
-		if($this->session->userdata('username') == ''){
+		if($this->session->userdata("username") == ""){
 			
-			$data['title'] = 'Login';
-			$data['body'] = 'users/login';	
+			$data["title"] = "Login";
+			$data["body"] = "users/login";	
 
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application", $data);
 
 		}else{
 
-			redirect('dashboard');
+			redirect("dashboard");
 
 		}
 	}
 
 	public function validate_login(){
 
-		$this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean',array(
-			'required' => '%s is required',
-			'xss_clean' => '%s is not valid'
-			));
+		$this->form_validation->set_rules("username", "Username", "trim|required|xss_clean", array(
+			'required' => '{field} is required',
+			'xss_clean' => '{field} is not valid',
+		));
 
-		$this->form_validation->set_rules('passwd', 'Password', 'trim|required|xss_clean',array(
-			'required' => '%s is required',
-			'xss_clean' => '%s is not valid'
-			));
+		$this->form_validation->set_rules("passwd", "Password", "trim|required|xss_clean", array(
+			"required" => "{field} is required",
+			"xss_clean" => "{field} is not valid",
+		));
 
-		$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
+		$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
 
-		$data['title'] = 'Login';
-		$data['body'] = 'users/login';
+		$data["title"] = "Login";
+		$data["body"] = "users/login";
 		
 		if ($this->form_validation->run() == FALSE){
 
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application", $data);
 
-		}else{
+		} else {
 
 			if($this->User_model->validate_login()){
+
 				$this->email->send();
 		
 				redirect('dashboard');
 
-			}else{
+			} else {
 
-				$this->session->set_flashdata('item', '<div class="alert alert-danger" role="alert" style="height: 50px;">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+				$this->session->set_flashdata("item", "<div class='alert alert-danger' role='alert' style='height: 50px;''>
+									<button type='button' class='close' data-dismiss='alert' aria-label='Close'>&times;</button>
 									
-									<div class="row">
-										<p><span class="fa fa-exclamation-triangle"></span>
+									<div class='row'>
+										<p><span class='fa fa-exclamation-triangle'></span>
 					<strong>Invalid</strong>&emsp;Username or Password</p>
 									</div>
-								</div>');
-				$this->login();
+								</div>");
+
+				self::login();
 				//$this->load->view('layouts/application',$data);
 
 			}
@@ -410,25 +405,26 @@ class User extends CI_Controller {
 	public function forgot_pass(){
 
 
-		$data['title'] = "Forgot Password | Can't Log In ";
-		$data['body'] = 'users/forgot';
+		$data["title"] 	= "Forgot Password | Can't Log In ";
+		$data["body"] 	= "users/forgot";
 		
-		$this->load->view('layouts/application',$data);
+		$this->load->view("layouts/application", $data);
 
 	}
 
 	public function reset_pass(){
 
-		if($this->session->userdata('email')){
+		if($this->session->userdata("email")){
 			
-			$data['title'] = "Reset Password | Can't Log In ";
-			$data['body'] = 'users/forgot_confirmation';			
-			$data['email'] = $this->session->userdata('email');
+			$data["title"] 	= "Reset Password | Can't Log In ";
+			$data["body"] 	= "users/forgot_confirmation";			
+			$data["email"]	= $this->session->userdata("email");
 
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application", $data);
+
 		}else{
 
-			$this->session->unset_userdata('email');
+			$this->session->unset_userdata("email");
 
 			redirect(base_url()."forgot");
 
@@ -439,36 +435,35 @@ class User extends CI_Controller {
 	public function change_pass(){
 
 		$this->form_validation->set_rules(
-			'passwd','Password','required|min_length[6]|trim|xss_clean',
-			array(
-				'required' => 'Password is required',
-				'min_length[6]' => 'Password must contain atleast six (6) alpha numeric characters'
+			"passwd", "Password", "required|min_length[6]|trim|xss_clean", array(
+				"required" => "Password is required",
+				"min_length[6]" => "Password must contain atleast six (6) alpha numeric characters"
 			)
 		);
 
 		$this->form_validation->set_rules(
-			'conf_passwd','Confirm Password','required|matches[passwd]|xss_clean',
-			array(
-				'required' => 'Password is required',
-				'matches["passwd"]' => 'Confirmation Password does not match',
+			"conf_passwd", "Confirm Password", "required|matches[passwd]|xss_clean", array(
+				"required" => "Password is required",
+				"matches['passwd']" => "Confirmation Password does not match",
 			)
 		);		
 
-		$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
+		$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
 
 
 		if ($this->form_validation->run() == FALSE){
 
-			$this->reset_pass();
+			self::reset_pass();
 
-		}else{
+		} else {
+
 			if($this->User_model->confirm_change(2)){
 				
 				redirect(base_url()."login");
 
-			}else{
+			} else {
 
-				$this->reset_pass();
+				self::reset_pass();
 
 			}
 		}
@@ -477,30 +472,30 @@ class User extends CI_Controller {
 
 	public function cancel(){
 
-		$this->session->unset_userdata('email');
-		redirect(base_url().'login');
+		$this->session->unset_userdata("email");
+		redirect(base_url()."login");
 
 	}
 
 	public function send_pass(){
 
-		$this->form_validation->set_rules('forgot_info', 'Email', 'trim|required|valid_email|is_exist[user_account.Email]|xss_clean',array(
-			'required' => '%s is required',
-			'is_exist' => "%s is not registered",
-			'xss_clean' => '%s is not valid',
-			));
+		$this->form_validation->set_rules("forgot_info", "Email", "trim|required|valid_email|is_exist[user_account.Email]|xss_clean", array(
+			"required" => "{field} is required",
+			"is_exist" => "{field} is not registered",
+			"xss_clean" => "{field} is not valid",
+		));
 
 
-		$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
+		$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
 
 		if ($this->form_validation->run() == FALSE){
 
-			$this->forgot_pass();
+			self::forgot_pass();
 
 		}else{
 
-			$this->session->unset_userdata('email');
-			$this->session->set_userdata('email', $this->input->post('forgot_info'));
+			$this->session->unset_userdata("email");
+			$this->session->set_userdata("email", $this->input->post("forgot_info"));
 
 			redirect(base_url()."forgot/reset");
 
@@ -513,19 +508,17 @@ class User extends CI_Controller {
 		//echo php_uname('n'); // may output e.g,: sandie
 		$timestamp = Carbon\Carbon::now();
 
-		$date = Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $timestamp, 'Asia/Manila');
+		$date = Carbon\Carbon::createFromFormat("Y-m-d H:i:s", $timestamp, "Asia/Manila");
 		//$date->setTimezone('Asia/Singapore');
 		$date->addSeconds(25200);
 
-		$this->email->from('mail.goats@gmail.com','G.O.A.T.S');
+		$this->email->from("mail.goats@gmail.com", "G.O.A.T.S");
 
-		$this->email->to('jaysonalpe@gmail.com');
+		$this->email->to("jaysonalpe@gmail.com");
 
 		$this->email->subject("Access Login");
 				
-		$this->email->message('<h1>Alert!</h1><br/>Computer Name: '.php_uname('n').'<br/>Timestamp: '.$date.'<br/>Username: '.$this->session->userdata('username').'<br/>'.$this->session->userdata('username').'<br/><a href="https://www.facebook.com/wolf.syntax">Admin</a>');
+		$this->email->message("<h1>Alert!</h1><br/>Computer Name: ". php_uname('n') ."<br/>Timestamp: ". $date ."<br/>Username: ". $this->session->userdata("username"). "<br/>". $this->session->userdata("username"). "<br/><a href='https://www.facebook.com/wolf.syntax'>Admin</a>");
 				
-		
-
 	}
 }

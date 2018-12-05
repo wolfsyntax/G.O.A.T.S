@@ -22,7 +22,7 @@
 								<div class="row">
 									<div class="col-12 ">
 										<div class="form-group">
-								        	<input type="text" class="form-control" id="" name="username" placeholder="Username" value="<?= set_value('username'); ?>">
+								        	<input type="text" class="form-control" id="" name="username" placeholder="Username" value="<?= set_value('username'); ?>" autofocus>
 
 											<?= (form_error('username')	!= "" ? form_error('username') : ''); ?>																
 								        </div>

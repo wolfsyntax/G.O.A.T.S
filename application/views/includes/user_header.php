@@ -10,17 +10,17 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li-->
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard"><i class="fa fa-user-circle"></i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;<?= $this->session->userdata('user_fname'); ?></span></a>
+        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard" style="top: 10px"> <i class="fa fa-user-circle" ></i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;<?= $this->session->userdata('user_fname'); ?></span></a>
       </li>
 
-      <li class="nav-item" style="position: relative; float: left;">
-        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard">
+      <li class="nav-item" style="">
+        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard" style="position: relative; top: -10px;">
           <?php if($this->session->userdata('notif') == 1){ ?>
-            <i class="fa fa-bell-o badge">
+            <i class="fa-stack fa fa-bell-o badge-wrapper" data-count="100" >
           <?php } else { ?>
-            <i class="fa fa-bell">
+            <i class="fa-stack fa-bell badge-wrapper" data-count="100">
           <?php } ?>
-            </i><span class="badge badge-danger">1</span><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;Notifications</span>
+            </i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;Notifications</span>
         </a>
       </li>
 

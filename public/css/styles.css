@@ -1,3 +1,8 @@
+.card-ubuntu {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+
 .custom-link:hover, .custom-link:focus{
   border-color: transparent;
   box-shadow: none;
@@ -11,6 +16,7 @@
 }
 
 .sidebar {
+  
   position: fixed;
   top: 10px;
   bottom: 0;
@@ -58,6 +64,7 @@
 
 
 a.nav-link .feather{
+
   color: #000;
   text-decoration: none;
   background-color: transparent;
@@ -80,6 +87,7 @@ a:hover {
 }**/
 
 .sidebar ul li div.collapse a.nav-link:hover {
+
   background-color: #6c757d !important;
   color: #fff !important;
 }
@@ -87,4 +95,49 @@ a:hover {
 .sidebar ul li div.collapse a.nav-link:hover span.fa {
   color: #fff !important;
 }
+
+
+.badge-wrapper {
+  position: relative !important;
+}
+
+.badge {
+
+  position: absolute !important;
+  top: 0 !important;
+  right: -5px !important;
+  text-align: center !important;
+  vertical-align:middle !important;
+
+}
+
+.badge-wrapper[data-count]:after{
+  position:absolute;
+  right:10%;
+  top:8%;
+  content: attr(data-count);
+  font-size:40%;
+  padding:.2em;
+  border-radius:50%;
+  line-height:1em;
+  color: white;
+  background:rgba(255,0,0,.85);
+  text-align:center;
+  min-width: 1em;
+  //font-weight:bold;
+}
+
+
+
+.badge:after{
+   position: absolute;
+     top: -5px;
+     right: -5px;
+     display: inline-block;
+     width: 8px;
+     height: 8px;
+     border-radius: 50%;
+}
+
+
 

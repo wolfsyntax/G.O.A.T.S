@@ -4,13 +4,14 @@
     <?php $this->load->view('includes/user_header'); ?>
     <?php $this->load->view('includes/sidebar'); ?>
 
-    <main class="col-12 col-md-11 col-lg-10 mt-5" role="main" >
+    <main class="col-12 col-md-11 col-lg-10 mt-5" role="main">
       <section class="col-12 mt-1">
 
         &emsp;
        
       </section>
-      <section class="col-12 bg-light px-2" >
+
+      <section class="col-12 bg-light px-2" style="margin-top: 40px !important;">
         
         <div class="alert alert-warning alert-dismissible fade show p-2" role="alert">
           <strong>Pro Tip!</strong> If you want to update your profile details and password&emsp;<a class="btn btn-sm btn-success" href="<?= base_url()?>profile/settings"><span class="fa fa-pencil"></span>&nbsp;Edit Profile</a>

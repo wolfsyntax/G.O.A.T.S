@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'status'		=> 'active',
 				);		
 
-				return $this->db->insert('goat_profile',$data);
+				return $this->db->insert("goat_profile",$data);
 
 			}
 			
@@ -71,9 +71,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'vendor_name' => $this->input->post("vendor_name",TRUE),
 				);
 
-				if($this->db->insert('goat_profile',$data_profile)){
+				if($this->db->insert("goat_profile",$data_profile)){
 					
-					return $this->db->insert('purchase_record',$data_purchase);
+					return $this->db->insert("purchase_record",$data_purchase);
 
 				}else{
 
@@ -105,7 +105,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 
 
-				return $this->db->insert('goat_profile',$data);
+				return $this->db->insert("goat_profile",$data);
 
 			}
 				
@@ -160,7 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				$this->db->where('eartag_id',$tag_id);
 
-				if($this->db->update('Goat_Profile',$data)){
+				if($this->db->update('goat_profile',$data)){
 					
 					$amount = $this->input->post("amount", TRUE);
 					$data = array(
@@ -195,7 +195,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				$this->db->where('eartag_id',$tag_id);
 
-				if($this->db->update('Goat_Profile',$data)){
+				if($this->db->update('goat_profile',$data)){
 					$data = array(
 						'eartag_id' => $tag_id,
 						'loss_caused' => $this->input->post("loss_caused", TRUE),

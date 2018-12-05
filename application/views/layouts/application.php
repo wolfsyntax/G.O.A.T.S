@@ -12,7 +12,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome">
 
 	<link rel="stylesheet" href="<?= base_url()?>public/css/app.css" >
-
+	<link rel="stylesheet" href="<?= base_url()?>public/css/style.css" >
 
 </head>
 <body>

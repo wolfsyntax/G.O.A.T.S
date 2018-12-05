@@ -2,8 +2,8 @@
 	<div class="row">
 		<div class="col">
 			<section class="">
-				<div class="card">
-					<div class="card-header">
+				<div class="card ">
+					<div class="card-header card-ubuntu">
 						Add Goats
 					</div>
 					<div class="card-body p-2">

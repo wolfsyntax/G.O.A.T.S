@@ -43,9 +43,9 @@ class Sitemap extends CI_Controller {
 	public function index()
 	{
 			
-		$data['title'] = 'Home';
-		$data['body'] = 'sitemaps/index';
-		$this->load->view('layouts/application',$data);		
+		$data["title"] = "Home";
+		$data["body"] = "sitemaps/index";
+		$this->load->view("layouts/application", $data);		
 /**		
 		if($this->session->userdata('username') != ''){
 			
@@ -53,8 +53,8 @@ class Sitemap extends CI_Controller {
 
 		}else{
 
-			$data['title'] = 'Home';
-			$data['body'] = 'sitemaps/index';
+			$data["title"] = 'Home';
+			$data["body"] = 'sitemaps/index';
 			$this->load->view('layouts/application',$data);
 
 		}
@@ -64,31 +64,31 @@ class Sitemap extends CI_Controller {
 
 	public function landing_page(){
 
-		$data['title'] = '';
-		$data['body'] = 'sitemaps/welcome';
+		$data["title"] = "";
+		$data["body"] = "sitemaps/welcome";
 
-		$this->load->view('layouts/application',$data);
+		$this->load->view("layouts/application", $data);
 
 	}
 
 	public function dashboard(){
 
-		if($this->session->userdata('username') != ''){
+		if($this->session->userdata("username") != ""){
 
-			$data['title'] = 'Dashboard';
-			$data['body'] = 'sitemaps/dashboard';
+			$data["title"] = "Dashboard";
+			$data["body"] = "sitemaps/dashboard";
 
 			$this->faker = Faker\Factory::create();
 			
 			//Working Carbon
-			$data['test'] = Carbon\Carbon::now();
+			$data["test"] = Carbon\Carbon::now();
 			//$data['test'] = php_uname('n'); // may output e.g,: sandie
 
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application", $data);
 			
-		}else{
+		} else {
 
-			redirect('/');
+			redirect(base_url());
 
 		}
 
@@ -97,19 +97,19 @@ class Sitemap extends CI_Controller {
 	public function about()
 	{
 
-		$data['title'] = 'About';
-		$data['body'] = 'sitemaps/about';
+		$data["title"] = "About";
+		$data["body"] = "sitemaps/about";
 
-		$this->load->view('layouts/application',$data);
+		$this->load->view("layouts/application", $data);
 
 	}
 
 	public function page_not_found(){
 
-		$data['title'] = 'Error 404 (Not Found)!!';
-		$data['body'] = 'sitemaps/404';
+		$data["title"] = "Error 404 (Not Found)!!";
+		$data["body"] = "sitemaps/404";
 
-		$this->load->view('layouts/application',$data);	
+		$this->load->view("layouts/application", $data);	
 		
 	}
 
@@ -117,14 +117,14 @@ class Sitemap extends CI_Controller {
 
 		// instantiate and use the dompdf class
 		$dompdf = new Dompdf\Dompdf();
-		$data['rows'] = ''; //contains the query results
+		$data["rows"] = ""; //contains the query results
 
 		$html = $this->load->view('',$data, true); // replace '' with your view that is used in displaying the html for generating PDF
 
 		$dompdf->loadHtml($html);
 
 		// (Optional) Setup the paper size and orientation
-		$dompdf->setPaper('A4', 'landscape'); //Paper Size: legal, letter, a4, etc,.
+		$dompdf->setPaper("A4", "landscape"); //Paper Size: legal, letter, a4, etc,.
 
 		// Render the HTML as PDF
 		$dompdf->render();
@@ -134,7 +134,7 @@ class Sitemap extends CI_Controller {
 
 		// Output the generated PDF to Browser
 		//$dompdf->stream();
-		$dompdf->stream("T".md5(time()).".pdf", array("Attachment" => 0)); //output filename
+		$dompdf->stream("T" .md5(time()). ".pdf", array("Attachment" => 0)); //output filename
 
 	}
 
