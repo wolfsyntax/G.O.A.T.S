@@ -12,7 +12,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome">
 
 	<link rel="stylesheet" href="<?= base_url()?>public/css/app.css" >
-
+	<style>
+		[data-style=primary] + .popover {background:  #E74C3C; border-radius: 0;}
+	[data-style=primary] + .popover .popover-title {background-color: #FC6; border-radius: 0; color: #E74C3C;}
+	</style>
 </head>
 <body id="back2top">
 
@@ -71,7 +74,48 @@
 
 	$(function () {
   		
-  		$('[data-toggled="popover"]').popover();
+	  	$('[data-toggle="popover"]').popover({
+
+	  		placement: "right",
+	  		trigger: "focus",
+	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header  text-white" style="background-color: #20c997;"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
+	  	});
+	  	
+	  	
+	  	
+
+	  	$('[data-target="#breedingInfo"]').popover({
+
+	  		placement: "right",
+	  		trigger: "focus",
+	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header bg-warning text-white"><h3 class="popover-title text-white"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
+	  	});
+
+	  	$('[data-target="#healthCheck"]').popover({
+
+	  		placement: "right",
+	  		trigger: "focus",
+	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header bg-success text-white"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
+	  	});
+
+	  	$('[data-target="#goatManagement"]').popover({
+
+	  		placement: "right",
+	  		trigger: "focus",
+	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header bg-dark text-white"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
+	  	});
+	  	
+
+	  	$('[data-target="#financialManagement"]').popover({
+
+	  		placement: "right",
+	  		trigger: "focus",
+	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header bg-info text-white"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
+	  	});
+
+//		$('.popover-header').css("background-color", "#9FC53B");
+
+  		$('[data-toggled="popover"]').popover({	container: "body" });
 
   		$('#dam_id_select').editableSelect();
 

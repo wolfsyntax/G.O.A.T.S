@@ -6,8 +6,10 @@
   right: 10px;
   z-index: 99 !important;
   border: none !important;
-  
+
 }
+
+#gmgt .popover-header {background:  #E74C3C; border-radius: 0;}
 
 .card-ubuntu {
   font-family: 'Ubuntu', sans-serif;
