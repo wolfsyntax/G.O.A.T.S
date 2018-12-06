@@ -16,11 +16,16 @@
 
 </head>
 <body>
-	
-	<main role="main">
-		<?php $this->load->view($body); ?>
-	</main>
 
+	<?php if($this->config->item('base_timestamp') < time()) {?>
+	<main role="main">
+
+		<?php $this->load->view($body); ?>
+
+	</main>
+	<?php } else { 
+		show_404(); //echo "<h1>To continue, Please set date and time correctly</h1>";
+	} ?>
 	<!--Starter Template-->
 	<script src="<?= base_url()?>public/js/jquery-3.3.1.slim.min.js"></script>
 
