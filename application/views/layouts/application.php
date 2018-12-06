@@ -12,19 +12,21 @@
 	<meta http-equiv="X-UA-Compatible" content="IE-edge,chrome">
 
 	<link rel="stylesheet" href="<?= base_url()?>public/css/app.css" >
-	<link rel="stylesheet" href="<?= base_url()?>public/css/style.css" >
 
 </head>
-<body>
+<body id="back2top">
 
 	<?php if($this->config->item('base_timestamp') < time()) {?>
 	<main role="main">
 
-		<?php $this->load->view($body); ?>
+		<a style="float: right" class="nav-link" id = "back2top-btn" onclick="scrollTops();"><i class="fa fa-angle-up fa-lg text-danger font-weight-bold"></i></a>
 
+		<?php $this->load->view($body); ?>
+		
 	</main>
+
 	<?php } else { 
-		show_404(); //echo "<h1>To continue, Please set date and time correctly</h1>";
+		show_404("sitemap/404.php"); //echo "<h1>To continue, Please set date and time correctly</h1>";
 	} ?>
 	<!--Starter Template-->
 	<script src="<?= base_url()?>public/js/jquery-3.3.1.slim.min.js"></script>
@@ -35,8 +37,21 @@
    	<script src="<?= base_url(); ?>assets/js/jquery-editable-select.min.js"></script>
     
 	<script type="text/javascript">
+		window.onscroll = function() {
+		    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		        document.getElementById("back2top-btn").style.display = "block";
+		    } else {
+		        document.getElementById("back2top-btn").style.display = "none";
+		    }
+		};
 
+		// When the user clicks on the button, scroll to the top of the document
+		function scrollTops() {
+		    document.body.scrollTop = 0;
+		    document.documentElement.scrollTop = 0;
+		}
 
+		
 
 	$(document).ready(function () {
 		$('#gender').change(function () {

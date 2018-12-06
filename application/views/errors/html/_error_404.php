@@ -57,8 +57,8 @@ p {
 </head>
 <body>
 	<div id="container">
-		<h1>Date and Time Error</h1>
-		<p>To continue, Please set date and time correctly.<br/>-<a href="https://facebook.com/wolf.syntax">Admin</p>
+		<h1><?php echo $heading; ?></h1>
+		<?php echo $message; ?>
 	</div>
 </body>
 </html>

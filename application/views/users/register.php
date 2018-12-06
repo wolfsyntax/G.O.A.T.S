@@ -98,7 +98,7 @@
 						</div>
 
 						<div class="row">
-							<div class="col-12">
+							<div class="col-12 pt-3">
 								<button type="submit" class="btn btn-success col-12">Sign Up</button>
 							</div>
 						</div>
@@ -107,10 +107,10 @@
 							<div class="col-12 col-sm-12 col-lg-12">
 								<div class="container-fluid">
 									<div class="clearfix">&emsp;</div>
-									<div class="row">
+									<div class="row pt-3 pl-0">
 									
 										<div class="col-12 col-sm-12 col-lg-12">
-											<p class="form-inline text-dark">Already have an account? <a href="login" class="nav-link font-weight-normal text-capitalize text-dark" title="Login" tabindex="0">Log In</a></p>
+											Already have an account?<?= anchor(base_url().'login','Login',array("class"=>"nav-link font-weight-normal text-capitalize text-dark d-inline","title" => "Login Account",)); ?>
 										</div>
 									</div>							
 
