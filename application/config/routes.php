@@ -53,6 +53,9 @@ $route['default_controller'] = 'sitemap';
 $route['404_override'] = 'sitemap/page_not_found';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['restricted'] = 'sessions/forbidden_access';
+
+
 //$route['sitemap/(:any)'] = 'sitemap/page_not_found';
 //$route['goat/(:any)'] = 'sitemap/page_not_found';
 //$route['financial/(:any)'] = 'sitemap/page_not_found';

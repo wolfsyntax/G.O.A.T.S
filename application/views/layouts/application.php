@@ -115,7 +115,7 @@
 
 //		$('.popover-header').css("background-color", "#9FC53B");
 
-  		$('[data-toggled="popover"]').popover({	container: "body" });
+  		$('[data-toggled="popover"]').popover({	container: "body",trigger: "focus", placement: "right" });
 
   		$('#dam_id_select').editableSelect();
 

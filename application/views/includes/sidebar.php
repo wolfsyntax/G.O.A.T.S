@@ -1,6 +1,6 @@
 <nav class="col-1 col-lg-2 d-none d-sm-none d-md-block d-xl-inline-block bg-light" style="">
 
-  <div class="sidebar" id="sidebar-div" style="margin-top: 40px !important;">
+  <div class="sidebar" id="sidebar-div" style="margin-top: 10px !important;">
     <ul class="nav flex-column " id="sidebar">
       <li class="nav-item">
         <a class="nav-link active" href="<?= base_url(); ?>dashboard" >
