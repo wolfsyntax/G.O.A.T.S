@@ -101,9 +101,9 @@
 								</div>
 							</div>
 
-							<div class="form-row p-1 float-right w-100">
+							<div class="form-row p-1 float-right w-100 mt-sm-5">
 								<span class="col clearfix"></span>
-								<input type="submit" class="btn btn-success col-3" value="Add Goat">
+								<input type="submit" class="btn btn-success col-6 col-md-3" value="Add Goat">
 							</div>
 
 

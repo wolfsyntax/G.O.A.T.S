@@ -5,7 +5,8 @@ RewriteRule ^(.*)$ index.php/$1 [L]
 RewriteCond %{HTTP:X-Forwarded-SSL} on
 RewriteCond %{HTTPS} on
 
-Options -Indexes
 
 ErrorDocument 403 http://%{HTTP_HOST}%{REQUEST_URI}../restricted
+
+Options -Indexes
 

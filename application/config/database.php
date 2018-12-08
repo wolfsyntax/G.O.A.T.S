@@ -78,7 +78,8 @@ $query_builder = TRUE;
 	'password' => 'godtoor',
 	'database' => 'mgmf',
 
-*/
+
+//Custom
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
@@ -100,3 +101,28 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+*/
+
+if(ENVIRONMENT !== 'production') {
+    $db['default'] = array(
+		'username' => 'root',
+		'password' => '',
+		'database' => 'mgmf',
+		'hostname' => '127.0.0.1',
+		'dbdriver' => 'mysqli',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+    );
+
+} else {
+
+    $db['default'] = array(
+		'username' => 'id1345229_pywizard',
+		'password' => 'godtoor',
+		'database' => 'id1345229_mgmf',
+		'hostname' => 'localhost',
+		'dbdriver' => 'mysqli',
+		'char_set' => 'utf8',
+		'dbcollat' => 'utf8_general_ci',
+    );
+}
