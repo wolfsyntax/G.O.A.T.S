@@ -197,6 +197,8 @@ class Goat extends CI_Controller {
 	public function breeding_module()
 	{
 		
+
+
 		if($this->session->userdata('username') != ''){
 			
 			$data['title'] = 'Goat Breeding';
@@ -219,7 +221,7 @@ class Goat extends CI_Controller {
 
 	public function validate_breeding_info()
 	{
-		
+
 		if($this->session->userdata('username') != ''){
 			
 			$this->form_validation->set_rules('dam_id','Dam ID','required|xss_clean|trim|numeric|is_dam_exist[goat_profile.eartag_id]',
@@ -236,16 +238,11 @@ class Goat extends CI_Controller {
 				)
 			);
 
-			$this->form_validation->set_rules('breed_date','Breed Date','required|xss_clean|trim',
+			$this->form_validation->set_rules('breed_date','Breed Date','required|xss_clean|trim|check_date',
 				array(
 					'required' => 'Breed Date is required',
-				)
-			);
-
-			$this->form_validation->set_rules('breed_date','Breed Date','required|xss_clean|trim',
-				array(
-					'required' => 'Breed Date is required',
-				)
+					'check_date' => "Incorrect date settings"
+ 				)
 			);
 
 			$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');

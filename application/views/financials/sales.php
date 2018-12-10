@@ -4,11 +4,11 @@
 			<section class="">
 				<div class="card">
 					<div class="card-header">
-						Add Goat Sales
+						<h3>Add Goat Sales</h3>
 					</div>
 					
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/sales', array('class'=>'form','style'=>''));?>
+						<?= form_open(base_url().'goats/sales', array('class'=>'form p-5','style'=>''));?>
 							
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
@@ -70,7 +70,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Description <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="text" name="description" value="<?= set_value('description'); ?>" placeholder="notes / additional information" class="form-control ">
+									<textarea name="description" placeholder="notes / additional information" class="form-control "><?= set_value('description'); ?></textarea>
 
 									<?= (form_error('description')	!= "" ? form_error('description') : ''); ?>
 

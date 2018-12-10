@@ -5,10 +5,10 @@
 			<section class="">
 				<div class="card">
 					<div class="card-header">
-						Manage Loss
+						<h3>Manage Loss</h3>
 					</div>
 					<div class="card-body p-2">
-						<?= form_open(base_url().'manage/loss',array('class'=>'form')); ?>
+						<?= form_open(base_url().'manage/loss',array('class'=>'form p-5')); ?>
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
 							</div>

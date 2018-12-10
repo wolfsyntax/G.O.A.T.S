@@ -1,97 +1,90 @@
 
-  <section class="mt-5">
- 
-    <div class="col-md-8 offset-md-2">
-      <span class="anchor" id="formUserEdit"></span>
-      <hr class="my-4">
-        
-      <!-- form user info -->
-      <div class="card card-outline-secondary">
-        <div class="card-header">
-          <h3 class="mb-0"><i class="fas fa-transgender"></i>&nbsp;</i>Breeding</h3>
-        </div>
-        
-        <div class="card-body" >
-          <?= form_open(base_url().'breed/verify', array('class'=> 'form')); ?>
-          <div class="form-group row"> 
-            <?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
+<div class="container-fluid p-2">
+  <div class="row">
+    <div class="col">
+      
+      <section class="">
+        <div class="card">
+          <div class="card-header">
+            <h3>Breeding Record</h3>
+            <p class="text-muted">Add breeding attempt</p>
           </div>
-
-          <div class="form-group row"> 
-            <label class="col-lg-2 col-form-label form-control-label" style="margin-left:130px;">Dam ID</label>                           
-              
-            <div class="col-lg-6">
-              <!-- Populate Dam ID using set_value -->
-              <!--input class="form-control" type="text" value="<?= set_value('dam_id');?>" name="dam_id" placeholder="Dam ID"-->
-
-              <select name="dam_id" id="dam_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('dam_id');?>">
-
-                  <?php foreach($dam_record as $row) {?>
-                    <option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
-                  <?php }?>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group row"> 
-            <label class="col-lg-2 col-form-label form-control-label" style="margin-left:130px;">Sire ID</label>                           
-              
-            <div class="col-lg-6">
-              <!--input class="form-control" type="text" value="<?= set_value('sire_id');?>" name="sire_id" placeholder="Sire ID" !-->
+          
+          <div class="card-body p-2">
+          <?= form_open(base_url().'breed/verify', array('class'=> 'form p-5')); ?>
+            <div class="form-group row"> 
+              <label class="col-lg-2 col-form-label form-control-label">Sire ID</label>                           
+                    
+              <div class="col">
 
                 <select name="sire_id" id="sire_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('sire_id');?>">
                   <?php foreach($sire_record as $row) {?>
                     <option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
                   <?php }?>
-              </select>
+                </select>
+                <?= (form_error('sire_id') != "" ? form_error('sire_id') : ''); ?>
+              </div>
             </div>
-          </div>
-          <?php
 
-            foreach($test as $row){
+            <div class="form-group row"> 
+              <label class="col-lg-2 col-form-label form-control-label">Dam ID</label>                           
                     
-                $client_id = $row->eartag_id;
-                    
-              }
+              <div class="col">
+                    <!--input class="form-control" type="text" value="<?= set_value('sire_id');?>" name="sire_id" placeholder="Sire ID" !-->
 
-           ?>              
-          <div class="form-group row">  
-            <label class="col-lg-2 col-form-label form-control-label" style="margin-left:130px;">Breeding Date</label>    
-              
-            <div class="col-lg-6">
-              <input class="form-control" type="date" value="<?= set_value('breed_date');?>" id="" placeholder="yyyy-mm-dd" name="breed_date">
-            </div>
-          </div>
-
-          <div class="form-group row">
-                        
-            <label class="col-lg-2 col-form-label form-control-label" style="margin-left:130px;">Description:</label>
-                                                    
-            <div class="col-lg-6">
-              <textarea class="form-control" id="" placeholder="Description" name="description"><?= set_value('description'); ?></textarea>
-       
+                <select name="dam_id" id="dam_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('dam_id');?>">
+                  <?php foreach($dam_record as $row) {?>
+                    <option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
+                  <?php }?>
+                </select>
+                <?= (form_error('dam_id') != "" ? form_error('dam_id') : ''); ?>
+              </div>
             </div>
 
-          </div>
-
-          <div class="form-group row">
-              
-            <label class="form-control-label" style="margin-left:130px;"></label>
-              
-            <div class="col-lg-9 mt-2">
-              <input type="submit" style="margin-left:145px;" class="btn btn-primary col-8" value="Add Breeding">
+            <div class="form-group row">
+              <label for="" class="col-lg-2 col-form-label form-control-label">Breeding Date</label>
+              <div class="col">
+                <input class="form-control" type="date" value="<?= set_value('breed_date');?>" id="" placeholder="yyyy-mm-dd" name="breed_date">
+                <?= (form_error('breed_date') != "" ? form_error('breed_date') : ''); ?>
+              </div>
             </div>
 
+            <div class="form-group row">
+              <label for="" class="col-lg-2 col-form-label form-control-label">Description</label>
+              <div class="col">
+                <textarea class="form-control" id="" placeholder="Description" name="description"><?= set_value('description'); ?></textarea>
+                <?= (form_error('description') != "" ? form_error('description') : ''); ?>
+              </div>
+            </div>
+
+            <div class="form-row p-5 float-right w-100">
+              <span class="col clearfix"></span>
+              <input type="submit" class="btn btn-success col-6 col-md-3" value="Add Breeding">
+            </div>
+
+          <?= form_close();?>  
           </div>
-                                     
-        <?= form_close();?>
+          <div class="card-footer">
+            A
+          </div>
         </div>
+      </section>      
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <div class="card p-1">
+        <div class="card-header">
+          Purchases
+        </div>
+        <div class="card-body p-1 bg-light jumbotron mt-1 form-control">  
+          No purchases to show.
+        </div>
+
       </div>
     </div>
+  </div>
+</div>
 
-
-
-
-
-  </section>  
 

@@ -15,8 +15,7 @@
               'constraint' => 255,
             ),
             'password' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 255,
+              'type' => 'TEXT',
             ),
             'phone' => array(
               'type' => 'VARCHAR',

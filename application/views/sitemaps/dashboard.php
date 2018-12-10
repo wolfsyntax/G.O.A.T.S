@@ -4,7 +4,8 @@
     <?php $this->load->view('includes/user_header'); ?>
     <?php $this->load->view('includes/sidebar'); ?>
 
-    <main class="col-12 col-md-11 col-lg-10 mt-5" role="main">
+    
+    <main class="col-12 col-md-11 col-lg-10 mt-5" role="main" style="position: fixed; padding-left: 16.333333%; min-width: 83.333333%; max-width: 100%;">
       <section class="col-12 mt-1">
 
         &emsp;

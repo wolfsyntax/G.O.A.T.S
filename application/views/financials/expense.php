@@ -3,7 +3,7 @@
 		<div class="col">
 			<div class="card p-1">
 				<div class="card-header">
-					Expenses
+					<h3>Add Expenses</h3>
 				</div>
 				<div class="card-body">
 					<div class="row">
@@ -23,10 +23,10 @@
 				<div class="card-header">
 					<span class=""></span>Add New Expense
 				</div>
-				<?= form_open('',array('class'=>'p-1')); ?>
+				<?= form_open('',array('class'=>'p-5 form')); ?>
 					<div class="form-row">
 						<div class="col-12 form-group">
-							<input type="text" name="">
+							<input type="text" name="" class="form-control">
 						</div>
 					</div>
 				<?= form_close();?>

@@ -149,7 +149,19 @@ class CI_Form_validation {
 		log_message('info', 'Form Validation Class Initialized');
 	}
 
+	public function check_date($date){
 
+		$dx = new DateTime();
+//		echo $dx->getTimestamp();
+		$d = strtotime($date);
+
+		if($d > $dx->getTimestamp()){
+			return false;
+		}
+
+		return true;
+	}
+	
 	public function account_type($str){
 		
 		if($str == 'farm owner' || $str == 'tenant') return true;

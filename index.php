@@ -58,20 +58,15 @@
 //Custom
 $server_ip = getHostByName(getHostName());
 
-if (preg_match("/^(127\.0\.|10\.0\.|192\.168\.254\.).+/i", $server_ip)) {
+if (preg_match("/^(127\.0\.|10\.0\.|192\.168\.|172\.16).+/i", $server_ip)) {
 
     define("ENVIRONMENT", "development");
     define("BASEURL", "");
 
-} elseif (preg_match("/(\.000webhostapp\.com)$/", $server_ip)) {
-
-	define("ENVIRONMENT", "production");
-	define("BASEURL", "");
-
 } else {
 
-    define("ENVIRONMENT", "testing");
-    define("BASEURL", "https://domain.com/");
+    define("ENVIRONMENT", "production");
+    define("BASEURL", "http://goatsdb.000webhostapp.com");
 }
 
 /*

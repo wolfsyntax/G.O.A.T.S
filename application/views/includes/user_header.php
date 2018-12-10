@@ -36,6 +36,8 @@
           
           <a class="dropdown-item" href="<?= base_url() ?>logout"><i class="fa fa-sign-out"></i>&emsp;Sign out</a>
         </div>
+
+
       </li>
       
     </ul>

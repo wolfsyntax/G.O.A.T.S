@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			if(!empty($_POST)){
 
 				$username = $this->input->post('username',TRUE);
-				$password = hash('sha256',$this->input->post('passwd',TRUE));
+				$password = hash('sha256',$this->config->item('salt') .$this->input->post('passwd',TRUE));
 				
 				$this->db->where('Username',$username);
 				$this->db->where('Password',$password);
@@ -46,6 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					$this->session->unset_userdata('user_type');
 
 					$this->session->unset_userdata('notif');
+
 					foreach($query->result() as $row){
 						
 						//Case Sensitive: $row->field_name, field_name is case-sensitive
@@ -88,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'first_name'		=>	$this->input->post('first_name', TRUE),
 					'last_name'		=>	$this->input->post('last_name', TRUE),
 					'Username'		=>	$this->input->post('username', TRUE),
-					'Password'		=>	hash('sha256',$this->input->post('passwd', TRUE)),
+					'Password'		=>	hash('sha256',$this->config->item('salt').$this->input->post('passwd', TRUE)),
 					'Email'			=>	$this->input->post('email', TRUE),
 					'Phone'			=>	$this->input->post('phone',TRUE),
 				);
@@ -165,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				} else if($option == 1) {
 
 					$data = array(
-						'Password'		=>	hash('sha256',$this->input->post('passwd', TRUE)),
+						'Password'		=>	hash('sha256',$this->config->item('salt').$this->input->post('passwd', TRUE)),
 					);					
 				
 					$this->db->where('User_ID',$this->session->userdata('user_id'));

@@ -1,3 +1,9 @@
+    <?= password_needs_rehash(hash('sha256',$this->config->item('salt').'12345678'),12)?>
+    <?= Carbon\Carbon::createFromFormat("Y-m-d H:i:s", '2018-12-8 12:30:00', "Asia/Manila")->diffForHumans()?>
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">

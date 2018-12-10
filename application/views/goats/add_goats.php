@@ -4,10 +4,10 @@
 			<section class="">
 				<div class="card ">
 					<div class="card-header card-ubuntu">
-						Add Goats
+						<h3>Add Goats</h3>
 					</div>
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/new',array('class'=>'form')); ?>
+						<?= form_open(base_url().'goats/new',array('class'=>'form p-5')); ?>
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Tag ID <span class="text-danger">*</span></label>								
 								<div class="col">
@@ -15,7 +15,7 @@
 									<?= (form_error('eartag_id')	!= "" ? form_error('eartag_id') : ''); ?>	
 								</div>
 
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Tag Color <span class="text-danger">*</span></label>								
+								<label class="col-form-label-sm col-3 col-sm-3 col-md-1 col-lg-2">Tag Color <span class="text-danger">*</span></label>								
 								<div class="col">
 									<select name="tag_color" id="tag_color_select" class="form-control" placeholder="- Enter Tag Color -" required="" value="<?= set_value('tag_color'); ?>">
 

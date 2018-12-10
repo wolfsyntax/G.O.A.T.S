@@ -510,7 +510,7 @@ class User extends CI_Controller {
 
 		$date = Carbon\Carbon::createFromFormat("Y-m-d H:i:s", $timestamp, "Asia/Manila");
 		//$date->setTimezone('Asia/Singapore');
-		$date->addSeconds(25200);
+	//	$date->addSeconds(25200);
 
 		$this->email->from("mail.goats@gmail.com", "G.O.A.T.S");
 

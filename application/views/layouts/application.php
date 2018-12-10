@@ -13,8 +13,10 @@
 
 	<link rel="stylesheet" href="<?= base_url()?>public/css/app.css" >
 	<style>
-		[data-style=primary] + .popover {background:  #E74C3C; border-radius: 0;}
-	[data-style=primary] + .popover .popover-title {background-color: #FC6; border-radius: 0; color: #E74C3C;}
+		* {
+			font-family: 'Ubuntu', sans-serif;
+		}
+
 	</style>
 </head>
 <body id="back2top">
@@ -25,7 +27,6 @@
 		<a style="float: right" class="nav-link" id = "back2top-btn" onclick="scrollTops();"><i class="fa fa-angle-up fa-lg text-danger font-weight-bold"></i></a>
 
 		<?php $this->load->view($body); ?>
-		
 	</main>
 
 	<?php } else { 
@@ -98,6 +99,13 @@
 	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header bg-success text-white"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
 	  	});
 
+	  	$('[data-target="#assetManagement"]').popover({
+
+	  		placement: "right",
+	  		trigger: "focus",
+	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header bg-danger text-white"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
+	  	});
+	  	
 	  	$('[data-target="#goatManagement"]').popover({
 
 	  		placement: "right",

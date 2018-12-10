@@ -1,4 +1,6 @@
 # Goats: Goat Organize Application Tracking System
+
+
 ## 2018.11.24 - Faker and Carbon (Add via Composer) ./application/config/config.php
 
 ```php
@@ -116,3 +118,24 @@ Carbon\Carbon::now();
 	});
 
 ```
+
+## 2018.12.10 Add date validation for breeding
+### Prevent users to enter dates ahead the current date. 
+```php
+
+	public function check_date($date){
+
+		$dx = new DateTime();
+		$d = strtotime($date);
+
+		if($d > $dx->getTimestamp()){
+			return false;
+		}
+
+		return true;
+	}
+	
+
+```
+
+### Prevent access if the system date and time is not synchronize to the corrent date and time
