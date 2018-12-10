@@ -1,5 +1,10 @@
 # Goats: Goat Organize Application Tracking System
 
+### If you want to test this project: 
+1. Create database 'mgmf'
+2. php index.php migrate latest
+
+
 
 ## 2018.11.24 - Faker and Carbon (Add via Composer) ./application/config/config.php
 
