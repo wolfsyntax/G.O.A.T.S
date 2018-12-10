@@ -35,6 +35,10 @@
               'type' => 'FLOAT',
               'constraint' => '11,2',
             ),
+            'vendor' => array(
+              'type' => 'VARCHAR',
+              'constraint' => 255,
+            ),
             'is_castrated' => array(
               'type' => 'VARCHAR',
               'constraint' => 5,
