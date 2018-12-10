@@ -138,4 +138,4 @@ Carbon\Carbon::now();
 
 ```
 
-### Prevent access if the system date and time is not synchronize to the corrent date and time
+#### Prevent access if the system date and time is not synchronize and the input is a future date
