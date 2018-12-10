@@ -3,10 +3,7 @@
 ### If you want to test this project: 
 1. Create database 'mgmf'
 2. Open command prompt and go to the root directory of this project and execute this:
-```bat
-php index.php migrate latest
-```
-
+	php index.php migrate latest
 
 
 ## 2018.11.24 - Faker and Carbon (Add via Composer) ./application/config/config.php
