@@ -3,6 +3,7 @@
 ### If you want to test this project: 
 1. Create database 'mgmf'
 2. Open command prompt and go to the root directory of this project and execute this:
+
 	php index.php migrate latest
 
 
