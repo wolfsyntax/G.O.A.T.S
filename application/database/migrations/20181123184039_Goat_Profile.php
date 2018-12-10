@@ -1,6 +1,6 @@
-<?php
+ <?php
 
-      class Migration_Goat_Profile extends CI_Migration {
+      class Migration_Goat_Offspring extends CI_Migration {
 
         public function up() {
 
@@ -57,11 +57,11 @@
 
           $this->dbforge->add_key('eartag_id', TRUE);
 
-          $this->dbforge->add_field('CONSTRAINT fk_sire_profile FOREIGN KEY (`sire_id`) REFERENCES Goat_Profile(`eartag_id`)');
+          $this->dbforge->add_field('CONSTRAINT fk_sire_offspring FOREIGN KEY (`sire_id`) REFERENCES Goat_Profile(`eartag_id`)');
 
-          $this->dbforge->add_field('CONSTRAINT fk_dam_profile FOREIGN KEY (`dam_id`) REFERENCES Goat_Profile(`eartag_id`)');
+          $this->dbforge->add_field('CONSTRAINT fk_dam_offspring FOREIGN KEY (`dam_id`) REFERENCES Goat_Profile(`eartag_id`)');
 
-          $this->dbforge->create_table('goat_profile',TRUE,array('AUTO_INCREMENT' => '1',));
+          $this->dbforge->create_table('goat_offspring',TRUE,array('AUTO_INCREMENT' => '1',));
 
         }
 

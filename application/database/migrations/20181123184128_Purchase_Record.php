@@ -5,39 +5,47 @@
         public function up() {
 
           $this->dbforge->add_field(array(
-            'purchase_id' => array(
-              'type' => 'INT',
-              'constraint' => 11,
-              'auto_increment' => TRUE,
-            ),
+
             'eartag_id' => array(
               'type' => 'INT',
               'constraint' => 11,
+              'unique' => TRUE,
             ),
-            'purchase_weight' => array(
-              'type' => 'FLOAT',
-              'constraint' => '8,2',
-            ),
-            'price_per_kilo' => array(
-              'type' => 'FLOAT',
-              'constraint' => '8,2',
-            ),
-            'vendor_name' => array(
+            'eartag_color' => array(
               'type' => 'VARCHAR',
-              'constraint' => 255,
-              'default' => '-',
+              'constraint' => 64,
             ),
-            'description' => array(
-              'type' => 'TEXT',
-              'null' => TRUE,
+            'gender' => array(
+              'type' => 'VARCHAR',
+              'constraint' => 64,
+            ),
+            'body_color' => array(
+              'type' => 'VARCHAR',
+              'constraint' => 64,
             ),
             'purchase_date' => array(
               'type' => 'DATE',
             ),
-            'user_id' => array(
+            'purchase_weight' => array(
               'type' => 'INT',
               'constraint' => 11,
-            ),            
+              'null' => TRUE,
+            ),
+            'purchase_amount' => array(
+              'type' => 'FLOAT',
+              'constraint' => '11,2',
+            ),
+            'is_castrated' => array(
+              'type' => 'VARCHAR',
+              'constraint' => 5,
+              'null' => TRUE,
+            ),
+            'status' => array(
+              'type' => 'VARCHAR',
+              'constraint' => 128,
+              'default' => 'active',
+            ),
+                           
           ));
 
           $this->dbforge->add_key('purchase_id', TRUE);
