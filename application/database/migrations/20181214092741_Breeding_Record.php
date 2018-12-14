@@ -18,9 +18,9 @@
               'constraint'  => 11,
             ),
             'is_pregnant' => array(
-              'type'  => 'TINYINT',
-              'constraint' => 1,
-              'default' => 0,
+              'type'  => 'VARCHAR',
+              'constraint' => 64,
+              'default' => "No",
             ),
             'symptoms_a' => array(
               'type'        =>  'TINYINT',

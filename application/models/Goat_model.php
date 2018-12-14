@@ -17,11 +17,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$activity_id = self::activity_record("breeding");
 
 			if(!empty($_POST)){
+				
+				$preg_eval = $this->input->post("is_pregnant", TRUE);
 
 				$data = array(
 
 					"sire_id"		=> $this->input->post("partner_id", TRUE),
-					"is_pregnant" 	=> $this->input->post("is_pregnant", TRUE),
+					"is_pregnant" 	=> $preg_eval ? "Yes" : "No",
 					"activity_id"	=> $activity_id,
 
 				);
@@ -188,9 +190,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					'status' 	=> "Sold",
 					);
 
-					$this->db->where('eartag_id',$eartag_id);
-					return $this->db->update("goat_profile",$data);
-						
+					//$this->db->where('eartag_id',$eartag_id);
+					//return $this->db->update("goat_profile",$data);
+					return self::edit_record("goat_profile", $data, "eartag_id", $eartag_id);	
 				}
 
 			} 
@@ -217,7 +219,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		//create
-		public function add_record($table_name, $data){
+		protected function add_record($table_name, $data){
 
 			$this->db->insert($table_name,$data);
 			return $this->db->insert_id();
@@ -225,22 +227,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		//update
-		public function edit_record($table_name, $data, $id_name, $id){
+		protected function edit_record($table_name, $data, $id_name, $id){
 
 			$this->db->where($id_name,$id);
 
-			return $this->db->update($table,$data);
+			return $this->db->update($table_name,$data);
 
 		}
 
 		//delete
-		public function delete_record($table_name, $where){
+		protected function delete_record($table_name, $where){
 			$this->db->where($where);
 			return $this->db->delete($table_name);
 		}
 
 		//num_rows
-		public function count_rows($table_name, $where = "", $field = ""){
+		protected function count_rows($table_name, $where = "", $field = ""){
 			
 			if($field != '*') $this->db->select($field);
 			

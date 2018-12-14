@@ -17,12 +17,12 @@
                     
               <div class="col">
 
-                <select name="sire_id" id="sire_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('sire_id');?>">
+                <select name="partner_id" id="sire_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('partner_id');?>">
                   <?php foreach($sire_record as $row) {?>
                     <option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
                   <?php }?>
                 </select>
-                <?= (form_error('sire_id') != "" ? form_error('sire_id') : ''); ?>
+                <?= (form_error('partner_id') != "" ? form_error('partner_id') : ''); ?>
               </div>
             </div>
 
@@ -32,28 +32,28 @@
               <div class="col">
                     <!--input class="form-control" type="text" value="<?= set_value('sire_id');?>" name="sire_id" placeholder="Sire ID" !-->
 
-                <select name="dam_id" id="dam_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('dam_id');?>">
+                <select name="eartag_id" id="dam_id_select" class="form-control" placeholder="Enter or Choose Tag Number" required="" value="<?= set_value('eartag_id');?>">
                   <?php foreach($dam_record as $row) {?>
                     <option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
                   <?php }?>
                 </select>
-                <?= (form_error('dam_id') != "" ? form_error('dam_id') : ''); ?>
+                <?= (form_error('eartag_id') != "" ? form_error('eartag_id') : ''); ?>
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-lg-2 col-form-label form-control-label">Breeding Date</label>
               <div class="col">
-                <input class="form-control" type="date" value="<?= set_value('date_perform');?>" id="" placeholder="yyyy-mm-dd" name="date_perform">
-                <?= (form_error('date_perform') != "" ? form_error('date_perform') : ''); ?>
+                <input class="form-control" type="date" value="<?= set_value('perform_date');?>" id="" placeholder="yyyy-mm-dd" name="perform_date">
+                <?= (form_error('perform_date') != "" ? form_error('perform_date') : ''); ?>
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-lg-2 col-form-label form-control-label">Description</label>
               <div class="col">
-                <textarea class="form-control" id="" placeholder="Description" name="description"><?= set_value('description'); ?></textarea>
-                <?= (form_error('description') != "" ? form_error('description') : ''); ?>
+                <textarea class="form-control" id="" placeholder="Description" name="remarks"><?= set_value('remarks'); ?></textarea>
+                <?= (form_error('remarks') != "" ? form_error('remarks') : ''); ?>
               </div>
             </div>
 

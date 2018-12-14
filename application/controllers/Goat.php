@@ -265,6 +265,7 @@ class Goat extends CI_Controller {
 
 			$this->form_validation->set_rules('remarks','Remarks','xss_clean|trim');
 
+			$this->form_validation->set_rules('is_pregnant','Is Pregnant','xss_clean|trim');
 
 			$this->form_validation->set_error_delimiters('<small class="form-text text-danger">', '</small>');
 
@@ -276,7 +277,7 @@ class Goat extends CI_Controller {
 				
 				$message = '';						
 				$flag = 0;		
-				if($this->Goat_model->add_breeding_record()){
+				if($this->Goat_model->breeding_record()){
 
 					$message = '<span class="fa fa-check-circle"></span>
 						<strong>Success</strong>&emsp; Breeding record added';
@@ -300,15 +301,8 @@ class Goat extends CI_Controller {
 
 				
 				$this->session->set_flashdata('goat', $content);
-				if($flag === 1){
-					
-					redirect('dashboard');
 
-				}else{
-
-					self::breeding_module();
-
-				}
+				self::breeding_module();
 
 			}
 
