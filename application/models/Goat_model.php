@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				if($category == "birth"){
 					
-					echo "<h1>BIRTH</h1>";
+				//	echo "<h1>BIRTH</h1>";
 
 					$data = array(
 
@@ -130,7 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				}else if($category == "purchase"){
 					
-					echo "<h1>PURCHASE</h1>";
+					//echo "<h1>PURCHASE</h1>";
 
 					$data = array(
 							
@@ -167,27 +167,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				
 				$eartag_id = $this->input->post("eartag_id", TRUE);
 
-				$data = array("status"	=> "sold");
-				if(self::edit_record("goat_profile", $data, "eartag_id = {$eartag_id}")){
+				$remarks = $this->input->post("remarks", TRUE);
 
+				$data = array(
+
+					"user_id"			=> $this->session->userdata("user_id"),
+					"price_per_kilo"	=> $this->input->post("price_per_kilo", TRUE),
+					"weight"			=> $this->input->post("weight", TRUE),
+					"transact_date"		=> $this->input->post("transact_date", TRUE),
+					"sold_to"			=> $this->input->post("sold_to", TRUE),
+					"remarks"			=> $remarks ? $remarks : "N/A",
+					"eartag_id"			=> $eartag_id,
+
+				);
+
+				//echo var_dump($data);
+				if(self::add_record("goat_sales", $data) > 0){
 					$data = array(
-
-						"user_id"			=> $this->session->userdata("user_id"),
-						"price_per_kilo"	=> $this->input->post("price_per_kilo", TRUE),
-						"weight"			=> $this->input->post("weight", TRUE),
-						"transact_date"		=> $this->input->post("transact_date", TRUE),
-						"sold_to"			=> $this->input->post("sold_to", TRUE),
-						"remarks"			=> $this->input->post("remarks", TRUE),
-						"eartag_id"			=> $eartag_id,
-
+					'eartag_id' => $eartag_id,
+					'status' 	=> "Sold",
 					);
 
-
-					return self::add_record("goat_sales", $data);
-
+					$this->db->where('eartag_id',$eartag_id);
+					return $this->db->update("goat_profile",$data);
+						
 				}
 
-			}
+			} 
 
 			return FALSE;
 
@@ -219,9 +225,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		}
 
 		//update
-		public function edit_record($table_name, $data = array(), $where = ""){
+		public function edit_record($table_name, $data, $id_name, $id){
 
-			$this->db->where($where);
+			$this->db->where($id_name,$id);
+
 			return $this->db->update($table,$data);
 
 		}

@@ -79,7 +79,7 @@ class Financial extends CI_Controller {
 	public function validate_sales(){
 
 		if($this->session->userdata("username") != ""){
-			
+			//echo "<h1>Data Sent to system for Validation</h1>";
 			$this->form_validation->set_rules("eartag_id","Tag ID","required|numeric|xss_clean|trim|is_exist[goat_profile.eartag_id]",
 				array(
 					"required" => "{field} is required",
@@ -88,13 +88,14 @@ class Financial extends CI_Controller {
 				)
 			);
 
-			$this->form_validation->set_rules("date_sold","Date sold","required|xss_clean|trim",
+			$this->form_validation->set_rules("transact_date","Date sold","required|xss_clean|trim|check_date",
 				array(
 					"required" => "{field} is required",
+					'check_date' => "Incorrect date settings",
 				)
 			);
 
-			$this->form_validation->set_rules("buyer_name","Buyer Name","required|xss_clean|trim",
+			$this->form_validation->set_rules("sold_to","Buyer Name","required|xss_clean|trim",
 				array(
 					"required" => "{field} is required",
 				)
@@ -107,26 +108,14 @@ class Financial extends CI_Controller {
 				)
 			);
 
-			$this->form_validation->set_rules("amount","Price per Kilo","required|xss_clean|trim|numeric",
+			$this->form_validation->set_rules("price_per_kilo","Price per Kilo","required|xss_clean|trim|numeric",
 				array(
 					"required" => "{field} is required",
 				)
 			);
 
-			$this->form_validation->set_rules("purchase_price","Price per kilo","required|xss_clean|trim|numeric",
-				array(
-					"required" => "{field} is required",
-				)
-			);			
 
-			$this->form_validation->set_rules("purchase_weight","Total Weight","required|xss_clean|trim|numeric",
-				array(
-					"required" => "{field} is required",
-				)
-			);			
-
-
-			$this->form_validation->set_rules("description","Description / Notes","xss_clean|trim");			
+			$this->form_validation->set_rules("remarks","Notes","xss_clean|trim");			
 
 			
 			$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
@@ -138,7 +127,7 @@ class Financial extends CI_Controller {
 
 			}else{
 
-				if($this->Goat_model->goat_purchase()){
+				if($this->Goat_model->goat_sales()){
 					
 					$this->session->set_flashdata("goat", "<div class='alert alert-success col-12' role='alert' style='height: 50px;'>
 							<button type='button' class='close' data-dismiss='alert' aria-label='Close'>&times;</button>
@@ -163,7 +152,8 @@ class Financial extends CI_Controller {
 						</div>");
 				}
 
-				redirect(base_url()."financial/sales");
+				self::sales();
+
 			}
 		}
 

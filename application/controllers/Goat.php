@@ -388,8 +388,9 @@ class Goat extends CI_Controller {
 			'required' => '{field} is required',
 		));
 
-		$this->form_validation->set_rules('perform_date', 'Date of Loss', 'trim|required|xss_clean',array(
+		$this->form_validation->set_rules('perform_date', 'Date of Loss', 'trim|required|xss_clean|check_date',array(
 			'required' => '{field} is required',
+			'check_date' => "Incorrect date settings"
 		));
 
 

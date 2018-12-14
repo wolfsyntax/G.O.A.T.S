@@ -68,7 +68,7 @@
 
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Description <span class="text-danger">*</span></label>
+								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Description</label>
 								<div class="col">
 									<textarea name="remarks" placeholder="notes / additional information" class="form-control "><?= set_value('remarks'); ?></textarea>
 
