@@ -116,10 +116,10 @@ if(ENVIRONMENT !== 'production') {
 
 } else {
 
-    $db['default'] = array(
-		'username' => 'id1345229_pywizard',
+	$db['default'] = array(
+		'username' => 'id8178149_px_wizard',
 		'password' => 'godtoor',
-		'database' => 'id1345229_mgmf',
+		'database' => 'id8178149_mgmf',
 		'hostname' => 'localhost',
 		'dbdriver' => 'mysqli',
 		'char_set' => 'utf8',

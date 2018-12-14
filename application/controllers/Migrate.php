@@ -103,7 +103,7 @@ class Migrate extends CI_Controller {
   }
 
   protected function make_migration_file($name) {
-    
+    date_default_timezone_set("Asia/Manila"); #Philippines
     $date = new DateTime();
     $timestamp = $date->format('YmdHis');
 
@@ -127,7 +127,7 @@ class Migrate extends CI_Controller {
           ));
 
           \$this->dbforge->add_key('id', TRUE);
-          \$this->dbforge->create_table('$table_name');
+          \$this->dbforge->create_table('$table_name',TRUE,array('AUTO_INCREMENT'=>'1'));
 
         }
 

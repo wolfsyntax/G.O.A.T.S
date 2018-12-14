@@ -37,8 +37,9 @@
 
     <script src="<?= base_url()?>public/js/popper.min.js"></script>    
     <script src="<?= base_url()?>public/js/bootstrap.min.js"></script>
-
    	<script src="<?= base_url(); ?>assets/js/jquery-editable-select.min.js"></script>
+   	
+   	<script src="<?= base_url(); ?>assets/js/color_lookup.js"></script>
     
 	<script type="text/javascript">
 		window.onscroll = function() {
@@ -55,35 +56,37 @@
 		    document.documentElement.scrollTop = 0;
 		}
 
-		
-
-	$(document).ready(function () {
-		$('#gender').change(function () {
+		function tagColorPick(value){
+			value = value.substring(1,value.length);
+			var cval = get_color(value);
 			
-			if($(this).val() == 'male'){
+			$("#tag_color_select").val(cval);
+		}
+
+		$(document).ready(function () {
+			$('#gender').change(function () {
 				
-				$("#is_castrated").prop("disabled",false);
+				if($(this).val() == 'male'){
+					
+					$("#is_castrated").prop("disabled",false);
 
-			}else{
+				}else{
 
-				$("#is_castrated").prop("checked",false);
-				$("#is_castrated").prop("disabled",true);
+					$("#is_castrated").prop("checked",false);
+					$("#is_castrated").prop("disabled",true);
 
-			}
-		})
-	});
+				}
+			})
+		});
 
 	$(function () {
-  		
+
 	  	$('[data-toggle="popover"]').popover({
 
 	  		placement: "right",
 	  		trigger: "focus",
 	  		template: '<div class="popover"><div class="arrow"></div><div class="popover-header  text-white" style="background-color: #20c997;"><h3 class="popover-title"></h3></div><div class="popover-body"><p class="popover-content"></p></div></div></div>'
-	  	});
-	  	
-	  	
-	  	
+	  	});  	  	
 
 	  	$('[data-target="#breedingInfo"]').popover({
 

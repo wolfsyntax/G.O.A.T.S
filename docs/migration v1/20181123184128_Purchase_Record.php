@@ -11,18 +11,6 @@
               'constraint' => 11,
               'unique' => TRUE,
             ),
-            'eartag_color' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 64,
-            ),
-            'gender' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 64,
-            ),
-            'body_color' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 64,
-            ),
             'purchase_date' => array(
               'type' => 'DATE',
             ),
@@ -34,20 +22,6 @@
             'purchase_amount' => array(
               'type' => 'FLOAT',
               'constraint' => '11,2',
-            ),
-            'vendor' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 255,
-            ),
-            'is_castrated' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 5,
-              'null' => TRUE,
-            ),
-            'status' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 128,
-              'default' => 'active',
             ),
                            
           ));

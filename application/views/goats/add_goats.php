@@ -5,28 +5,34 @@
 				<div class="card ">
 					<div class="card-header card-ubuntu">
 						<h3>Add Goats</h3>
+						<span class="text-muted">Add Goats By Birth</span>
 					</div>
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/new',array('class'=>'form p-5')); ?>
+						<?= form_open(base_url().'goats/new/birth',array('class'=>'form p-sm-2 p-md-5')); ?>
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Tag ID <span class="text-danger">*</span></label>								
-								<div class="col">
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2">Tag ID <span class="text-danger">*</span></label>								
+								<div class="col-8 col-sm-8 col-md-10">
 									<input type="text" name="eartag_id" placeholder="Tag ID"  class="form-control" value="<?= set_value('eartag_id');?>" />
 									<?= (form_error('eartag_id')	!= "" ? form_error('eartag_id') : ''); ?>	
 								</div>
 
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-1 col-lg-2">Tag Color <span class="text-danger">*</span></label>								
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2">Tag Color <span class="text-danger">*</span></label>								
 								<div class="col">
-									<select name="tag_color" id="tag_color_select" class="form-control" placeholder="- Enter Tag Color -" required="" value="<?= set_value('tag_color'); ?>">
+									<div class="row px-3">
+										
+										<select name="eartag_color" id="tag_color_select" class="form-control col-11" placeholder="- Enter Tag Color -" required="" value="<?= set_value('eartag_color'); ?>">
 
-                                    	<option value="Brown">Brown</option>           
-                        			</select>
-                        			<?= (form_error('tag_color')	!= "" ? form_error('tag_color') : ''); ?>	
+                                    		<option value="Brown">Brown</option>           
+                        				</select>
+                        				<input type="color" name="tag_picker" id="tagpicker" class="form-control col-1" onchange="tagColorPick(this.value);" >
+                        			</div>
+                        				<?= (form_error('eartag_color')	!= "" ? form_error('eartag_color') : ''); ?>	
+
 								</div>
 							</div>
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Gender <span class="text-danger">*</span></label>
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Gender <span class="text-danger">*</span></label>
 								<div class="col">
 									<select name="gender" class="custom-select" id="gender">
 										<option>- Select a Gender -</option>
@@ -38,7 +44,7 @@
 							</div>
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Body Color <span class="text-danger">*</span></label>
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Body Color <span class="text-danger">*</span></label>
 								<div class="col">
 									<select name="body_color" id="body_color_select" class="form-control" placeholder="- Enter Body Color -" value="<?= set_value('body_color'); ?>">
 
@@ -50,23 +56,23 @@
 							</div>
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Birth Date <span class="text-danger">*</span></label>
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Birth Date <span class="text-danger">*</span></label>
 								<div class="col">
 									<input type="date" name="birth_date" value="<?= set_value('birth_date');?>" placeholder="Date of Birth" class="form-control">
 									<?= (form_error('birth_date')	!= "" ? form_error('birth_date') : ''); ?>	
 								</div>
 							</div>
 
-							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Birth Weight <span class="text-danger">*</span></label>
+							<!--div class="form-row p-1">
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Birth Weight <span class="text-danger">*</span></label>
 								<div class="col">
 									<input type="text" name="birth_weight" value="<?= set_value('birth_weight'); ?>" placeholder="Enter weight in lbs." class="form-control">
 									<?= (form_error('birth_weight')	!= "" ? form_error('birth_weight') : ''); ?>	
 								</div>
-							</div>
+							</div-->
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Dam ID <span class="text-danger">*</span></label>
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Dam ID <span class="text-danger">*</span></label>
 								<div class="col">
 									<select name="dam_id" id="dam_id_select" class="form-control" placeholder="- Enter Dam ID -" value="<?= set_value('dam_id'); ?>">
 
@@ -80,7 +86,7 @@
 							</div>
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Sire ID <span class="text-danger">*</span></label>
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Sire ID <span class="text-danger">*</span></label>
 								<div class="col">
 									<select name="sire_id" id="sire_id_select" class="form-control" placeholder="- Enter Sire ID -" value="<?= set_value('sire_id');?>">
 
@@ -94,16 +100,15 @@
 							</div>
 
 							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Is castrated ? <span class="text-danger">*</span></label>
-								<div class="col">
+								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Is castrated ? <span class="text-danger">*</span></label>
+								<div class="col mt-2">
 									<input type="checkbox" name="is_castrated" value="" class="custom-checkbox" id="is_castrated" disabled="">
 									<?= (form_error('is_castrated')	!= "" ? form_error('is_castrated') : ''); ?>	
 								</div>
 							</div>
 
-							<div class="form-row p-1 float-right w-100 mt-sm-5">
-								<span class="col clearfix"></span>
-								<input type="submit" class="btn btn-success col-6 col-md-3" value="Add Goat">
+							<div class="form-row p-2">
+								<input type="submit" class="btn btn-success col-12 col-sm-6 col-md-3 offset-md-9 offset-sm-6" value="Add Goat">
 							</div>
 
 

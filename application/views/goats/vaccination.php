@@ -9,7 +9,7 @@
     </div>
   
     <div class="card-body" >
-     <?= form_open('', array('class'=> 'form')); ?>
+     <?= form_open('checkup/vaccination', array('class'=> 'form')); ?>
 
       <div class="form-group row"> 
         <label class="col-lg-2 col-form-label form-control-label" style="margin-left:130px;">Eartag ID</label>

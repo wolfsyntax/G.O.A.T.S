@@ -39,4 +39,4 @@
 	</div>
 </div>
 
-<?php } else {show_404(); } ?>
+<?php } else {  show_404(); } ?>

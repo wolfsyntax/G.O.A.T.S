@@ -86,12 +86,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				$data = array(
 
-					'first_name'		=>	$this->input->post('first_name', TRUE),
+					'first_name'	=>	$this->input->post('first_name', TRUE),
 					'last_name'		=>	$this->input->post('last_name', TRUE),
-					'Username'		=>	$this->input->post('username', TRUE),
-					'Password'		=>	hash('sha256',$this->config->item('salt').$this->input->post('passwd', TRUE)),
-					'Email'			=>	$this->input->post('email', TRUE),
-					'Phone'			=>	$this->input->post('phone',TRUE),
+					'username'		=>	$this->input->post('username', TRUE),
+					'password'		=>	hash('sha256',$this->config->item('salt').$this->input->post('passwd', TRUE)),
+					'phone_number'	=>	$this->input->post('phone',TRUE),
+					
 				);
 					
 				return $this->db->insert('user_account',$data);

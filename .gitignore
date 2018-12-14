@@ -33,3 +33,6 @@ goats_*.rar
 *.sublime-project
 /tests/tests/
 /tests/results/
+make.in
+
+/assets/

@@ -31,8 +31,8 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Date Sold <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="date" name="date_sold" value="<?= set_value('date_sold');?>" placeholder="" class="form-control ">
-									<?= (form_error('date_sold')	!= "" ? form_error('date_sold') : ''); ?>
+									<input type="date" name="transact_date" value="<?= set_value('transact_date');?>" placeholder="" class="form-control ">
+									<?= (form_error('transact_date')	!= "" ? form_error('transact_date') : ''); ?>
 
 								</div>
 							</div>
@@ -40,11 +40,11 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Sold Through <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="buyer_name" id="client_select" class="form-control" placeholder="- Select Buyer -" value="<?= set_value('buyer_name'); ?>">
+									<select name="sold_to" id="client_select" class="form-control" placeholder="- Select Buyer -" value="<?= set_value('sold_to'); ?>">
 
                                     	<option value="MGM">MGM</option>           
                         			</select>
-                        			<?= (form_error('buyer_name')	!= "" ? form_error('buyer_name') : ''); ?>
+                        			<?= (form_error('sold_to')	!= "" ? form_error('sold_to') : ''); ?>
 
 								</div>
 
@@ -61,8 +61,8 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Price per Kilo <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="text" name="amount" value="<?= set_value('amount'); ?>" placeholder="Price per Kilo" class="form-control ">
-									<?= (form_error('amount')	!= "" ? form_error('amount') : ''); ?>
+									<input type="text" name="price_per_kilo" value="<?= set_value('price_per_kilo'); ?>" placeholder="Price per Kilo" class="form-control ">
+									<?= (form_error('price_per_kilo')	!= "" ? form_error('price_per_kilo') : ''); ?>
 								</div>
 							</div>
 
@@ -70,9 +70,9 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Description <span class="text-danger">*</span></label>
 								<div class="col">
-									<textarea name="description" placeholder="notes / additional information" class="form-control "><?= set_value('description'); ?></textarea>
+									<textarea name="remarks" placeholder="notes / additional information" class="form-control "><?= set_value('remarks'); ?></textarea>
 
-									<?= (form_error('description')	!= "" ? form_error('description') : ''); ?>
+									<?= (form_error('remarks')	!= "" ? form_error('remarks') : ''); ?>
 
 								</div>
 							</div>

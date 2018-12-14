@@ -11,7 +11,7 @@
           </div>
           
           <div class="card-body p-2">
-          <?= form_open(base_url().'breed/verify', array('class'=> 'form p-5')); ?>
+          <?= form_open(base_url().'breed/verify', array('class'=> 'form p-3')); ?>
             <div class="form-group row"> 
               <label class="col-lg-2 col-form-label form-control-label">Sire ID</label>                           
                     
@@ -44,8 +44,8 @@
             <div class="form-group row">
               <label for="" class="col-lg-2 col-form-label form-control-label">Breeding Date</label>
               <div class="col">
-                <input class="form-control" type="date" value="<?= set_value('breed_date');?>" id="" placeholder="yyyy-mm-dd" name="breed_date">
-                <?= (form_error('breed_date') != "" ? form_error('breed_date') : ''); ?>
+                <input class="form-control" type="date" value="<?= set_value('date_perform');?>" id="" placeholder="yyyy-mm-dd" name="date_perform">
+                <?= (form_error('date_perform') != "" ? form_error('date_perform') : ''); ?>
               </div>
             </div>
 
@@ -57,9 +57,18 @@
               </div>
             </div>
 
-            <div class="form-row p-5 float-right w-100">
+            <div class="form-row p-1">
+              <label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Is pregnant ? <span class="text-danger">*</span></label>
+              
+              <div class="col">
+                <input type="checkbox" name="is_pregnant" value="" class="custom-checkbox" id="is_pregnant" disabled="">
+                <?= (form_error('is_pregnant') != "" ? form_error('is_pregnant') : ''); ?>  
+              </div>
+            </div>            
+
+            <div class="form-row ">
               <span class="col clearfix"></span>
-              <input type="submit" class="btn btn-success col-6 col-md-3" value="Add Breeding">
+              <input type="submit" class="btn btn-success col-sm-12 col-md-3 offset-md-9" value="Add Breeding">
             </div>
 
           <?= form_close();?>  

@@ -21,11 +21,6 @@
               'type' => 'VARCHAR',
               'constraint' => 15,
             ),
-            'email' => array(
-              'type' => 'VARCHAR',
-              'constraint' => 255,
-              'null' => TRUE,
-            ),
             'first_name' => array(
               'type' => 'VARCHAR',
               'constraint' => 255,

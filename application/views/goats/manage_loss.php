@@ -8,7 +8,7 @@
 						<h3>Manage Loss</h3>
 					</div>
 					<div class="card-body p-2">
-						<?= form_open(base_url().'manage/loss',array('class'=>'form p-5')); ?>
+						<?= form_open(base_url().'manage/loss',array('class'=>'form p-sm-1 p-md-5')); ?>
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
 							</div>
@@ -30,13 +30,13 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Caused of Loss<span class="text-danger font-weight-bold">*</span></label>
 								<div class="col">
-									<select name="loss_caused" class="custom-select">
+									<select name="cause" class="custom-select">
 										<option value="">- Select a Cause -</option>
 										<option value="Deceased">Deceased</option>
 										<option value="Lost">Lost</option>
 										<option value="Stolen">Stolen</option>
 									</select>
-									<?= (form_error('loss_caused')	!= "" ? form_error('loss_caused') : ''); ?>	
+									<?= (form_error('cause')	!= "" ? form_error('cause') : ''); ?>	
 								</div>
 							</div>
 
@@ -51,14 +51,13 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Notes</label>
 								<div class="col">
-									<input type="text" name="description" value="<?= set_value('description');?>" placeholder="" class="form-control">
-									<?= (form_error('description')	!= "" ? form_error('description') : ''); ?>	
+									<input type="text" name="remark" value="<?= set_value('remark');?>" placeholder="" class="form-control">
+									<?= (form_error('remark')	!= "" ? form_error('remark') : ''); ?>	
 								</div>
 							</div>
 
-							<div class="form-row p-1 float-right w-100">
-								<span class="col clearfix"></span>
-								<input type="submit" class="btn btn-success col-3" value="Submit Loss">
+							<div class="form-row p-1">
+								<input type="submit" class="btn btn-success col-12 col-sm-6 col-md-3 col-lg-2 offset-md-9 offset-sm-6 offset-lg-10" value="Submit Loss">
 
 							</div>								
 						<?= form_close();?>

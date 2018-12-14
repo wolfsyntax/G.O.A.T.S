@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 include_once 'vendor/autoload.php';
 //Set Timezone
 //date_default_timezone_set('Europe/Amsterdam'); #Europe
-date_default_timezone_set('Asia/Manila'); #Philippines
+
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ $config['admin_email'] = 'mail.goats@gmail.com';
 |
 */
 $config['timezone'] = 'Asia/Manila';
-
+date_default_timezone_set($config['timezone']); #Philippines
 /*
 |--------------------------------------------------------------------------
 | Date (Base)

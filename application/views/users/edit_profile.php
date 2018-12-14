@@ -98,7 +98,7 @@
 						<div class="row mt-3">
 							<div class="col-12 text-dark">
 								<div class="alert alert-info">
-									If you want to change your Email address and Username, see <a href="#">FAQ</a>
+									If you want to change your Username, see <a href="#">FAQ</a>
 								</div>
 							</div>
 						</div>

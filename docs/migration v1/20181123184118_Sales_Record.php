@@ -21,10 +21,6 @@
               'type' => 'FLOAT',
               'constraint' => '8,2',
             ),
-            'total_amount' => array(
-              'type' => 'FLOAT',
-              'constraint' => '8,2',
-            ),
             'description' => array(
               'type' => 'VARCHAR',
               'constraint' => 255,

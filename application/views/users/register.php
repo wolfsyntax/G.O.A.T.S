@@ -48,17 +48,9 @@
 								</div>					
 							</div>
 
-							<div class="col-12 col-md-6">
-								<div class="form-group">
-									<label class="col-form-label-sm mb-0">E-mail: <span class="text-danger">*</span></label>							
-									<input type="email" class="form-control" name = "email" id="" aria-describedby="" placeholder="Email" value="<?= set_value('email');?>" autocomplete="off">
+							
 
-									<?= (form_error('email')	!= "" ? form_error('email') : ''); ?>							
-
-								</div>					
-							</div>
-
-							<div class="col-12 col-md-6">
+							<div class="col-12">
 								<div class="form-group">
 									<label class="col-form-label-sm mb-0">Mobile number: <span class="text-danger">*</span></label>							
 									<input type="text" class="form-control" name = "phone" id="" aria-describedby="" placeholder="Mobile number" value="<?= set_value('phone');?>" autocomplete="off">

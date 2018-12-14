@@ -7,10 +7,11 @@
 				<div class="card">
 					<div class="card-header">
 						<h3>Add Goat Purchase</h3>
+						<span class="text-muted form-text">Add newly purchase Goat</span>
 					</div>
 					
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/purchase',array('class'=>'form p-5')); ?>
+						<?= form_open(base_url().'goats/new/purchase',array('class'=>'form p-5')); ?>
 
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
@@ -33,11 +34,11 @@
 									<div class="row">
 										<label class="col-form-label-sm col-12 col-sm-3 col-md-3 col-lg-3">Tag Color <span class="text-danger">*</span></label>								
 										<div class="col">
-											<select name="tag_color" id="tag_color_select" class="form-control" placeholder="- Enter Tag Color -" value="<?= set_value('tag_color');?>">
+											<select name="eartag_color" id="tag_color_select" class="form-control" placeholder="- Enter Tag Color -" value="<?= set_value('eartag_color');?>">
 
 	                                    		<option value="Green">Green</option>           
 	                        				</select>
-	                        				<?= (form_error('tag_color')	!= "" ? form_error('tag_color') : ''); ?>		
+	                        				<?= (form_error('eartag_color')	!= "" ? form_error('eartag_color') : ''); ?>		
 										</div>
 									</div>
 								</div>
@@ -46,12 +47,12 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-12 col-sm-3 col-md-2 col-lg-2">Gender <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="goat_gender" class="form-control py-sm-1" id="gender">
+									<select name="gender" class="form-control py-sm-1" id="gender">
 										<option value="">- Select a Gender -</option>
 										<option value="female">Female</option>
 										<option value="male">Male</option>
 									</select>
-									<?= form_error('goat_gender') != "" ? form_error('goat_gender') : ' '; ?>		
+									<?= form_error('gender') != "" ? form_error('gender') : ' '; ?>		
 								</div>
 							</div>
 
@@ -86,11 +87,11 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Purchase From <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="vendor_name" id="client_select" class="form-control" placeholder="- Vendor -" value="<?= set_value('vendor_name');?>">
+									<select name="purchase_from" id="client_select" class="form-control" placeholder="- Vendor -" value="<?= set_value('purchase_from');?>">
 
                                     	<option value=""></option>           
                         			</select>
-                        			<?= (form_error('vendor_name')	!= "" ? form_error('vendor_name') : ''); ?>		
+                        			<?= (form_error('purchase_from')	!= "" ? form_error('purchase_from') : ''); ?>		
 								</div>
 
 							</div>
@@ -103,13 +104,6 @@
 								</div>
 							</div>
 
-							<div class="form-row p-1">
-								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Notes</label>
-								<div class="col">
-									<input type="text" name="description" value="<?= set_value('description'); ?>" placeholder="Other details / Description" class="form-control">
-									<?= (form_error('description')	!= "" ? form_error('description') : ''); ?>		
-								</div>
-							</div>
 
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Is castrated ? <span class="text-danger">*</span></label>

@@ -69,7 +69,7 @@ class Financial extends CI_Controller {
 	
 		$data["title"] = "-";
 		$data["body"] = "financials/sales";
-		$data["goat_record"] = $this->Goat_model->select_applet("goat_profile","status = 'active'");
+		$data["goat_record"] = $this->Goat_model->show_record("goat_profile","status = 'active'");
 
 		$this->load->view("layouts/application",$data);
 
