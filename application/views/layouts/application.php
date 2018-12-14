@@ -40,7 +40,9 @@
    	<script src="<?= base_url(); ?>assets/js/jquery-editable-select.min.js"></script>
    	
    	<script src="<?= base_url(); ?>assets/js/color_lookup.js"></script>
-    
+
+    <script src="<?= base_url(); ?>assets/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url(); ?>assets/js/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		window.onscroll = function() {
 		    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -64,6 +66,9 @@
 		}
 
 		$(document).ready(function () {
+
+			 $('#breedingTable').DataTable();
+
 			$('#gender').change(function () {
 				
 				if($(this).val() == 'male'){

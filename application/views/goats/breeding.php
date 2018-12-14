@@ -1,5 +1,5 @@
 
-<div class="container-fluid p-2">
+<div class="container-fluid p-2 mb-5">
   <div class="row">
     <div class="col">
       
@@ -81,14 +81,42 @@
     </div>
   </div>
 
-  <div class="row mt-2">
+  <div class="row mt-2" style="margin-bottom: 200px;">
     <div class="col">
-      <div class="card p-1">
-        <div class="card-header">
-          Purchases
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <h1>Breeding Attempt(s)</h1>
         </div>
-        <div class="card-body p-1 bg-light jumbotron mt-1 form-control">  
-          No purchases to show.
+        <div class="row">  
+          <?php if($breeding_attempt == 0) {?>
+            No breeding attempt
+          <?php } else { ?>
+            <div class="mb-5">
+              <table id="breedingTable"  class="table table-striped table-bordered" style="width:100% top: 120px;">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                  </tr>
+                </tbody>
+              </table>              
+            </div>
+          <?php } ?>
         </div>
 
       </div>

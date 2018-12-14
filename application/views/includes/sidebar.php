@@ -18,7 +18,7 @@
         </a>
 
         <div class="collapse" id="goatManagement"  data-parent="#sidebar-div" >
-          <a class="nav-link">
+          <a class="nav-link" href="<?= base_url();?>goats/show">
             <span class="fa fa-database d-inline-block d-lg-none" title="Goat Records"></span><span class="d-none d-sm-none d-lg-inline-block fa fa-angle-right"></span><span class="text-dark font-weight-normal d-none d-sm-none d-lg-inline-block ">&nbsp;&nbsp;Goat Records</span>
           </a>
 

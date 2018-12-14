@@ -86,7 +86,7 @@ $route['cancel']['GET'] = 'user/cancel';
 
 #$route['goats/new']['GET'] = 'goat';
 $route['goats/new/(:any)']['POST'] = 'goat/validate_goat_details/$1';
-
+$route['goats/show']['GET'] = 'goat/view_goat';
 #$route['breed/new']['GET'] = 'goat/breeding_module';
 $route['breed/verify']['POST'] = 'goat/validate_breeding_info';
 

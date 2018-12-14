@@ -37,6 +37,24 @@ class Goat extends CI_Controller {
 
 	}
 
+	public function view_goat(){
+
+		if($this->session->userdata('username') != ''){
+
+			$data['title'] = 'Add Goats';
+				
+			$data['body'] = 'goats/goat_table';
+
+			$this->load->view('layouts/application',$data);
+
+		}else{
+
+			show_404();
+
+		}
+
+	}
+
 	public function index()
 	{
 		
@@ -224,7 +242,7 @@ class Goat extends CI_Controller {
 			$data['title'] = 'Goat Breeding';
 			$data['body'] = 'goats/breeding';
 			$data['sire_record'] = $this->Goat_model->show_record('goat_profile',"gender = 'male'");
-
+			$data['breeding_attempt'] = $this->Goat_model->show_record('breeding_record');
 			$data['dam_record'] = $this->Goat_model->show_record('Goat_Profile',"gender = 'female'");
 
 			$this->load->view('layouts/application',$data);
