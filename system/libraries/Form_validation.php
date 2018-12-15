@@ -149,6 +149,22 @@ class CI_Form_validation {
 		log_message('info', 'Form Validation Class Initialized');
 	}
 
+	//Check valid name
+	public function name_check($str){
+		
+		if(preg_match("/^([a-zA-Z]{2,}\s*){1,}$/", $str)){
+			
+			return TRUE;			
+
+		} else {
+
+			return FALSE;
+
+		}
+
+	}
+
+	//Check perform date
 	public function check_date($date){
 
 		$dx = new DateTime();

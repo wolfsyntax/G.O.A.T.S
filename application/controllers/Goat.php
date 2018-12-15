@@ -19,6 +19,29 @@ class Goat extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
+	/**
+
+		must be at least _ characters in length.								- min_length
+		cannot exceed _ characters in length.									- max_length
+		must contain only numbers.												- numeric
+		must contain a decimal number.											- decimal
+		must contain an integer.												- integer
+		is required.															- required
+		must be exactly _ characters in length.									- exact_length
+		must contain a number less than _.										- less_than
+		must contain a number less than or equal to _.							- less_than_equal_to
+		must contain a number greater than or equal to _.						- greater_than_equal_to
+		must contain a number greater than _.									- greater_than
+		must be one of: _,_,_.													- inlist[_,_,_]
+		may only contain alphabetical characters.								- alpha
+		may only contain alpha-numeric characters.								- alpha_numeric
+		may only contain alpha-numeric characters and spaces.					- alpha_numeric_spaces
+		may only contain alpha-numeric characters, underscores, and dashes.		- alpha_dash
+		must contain a valid IP.												- valid_ip
+		must contain a valid email address.										- valid_email
+		must contain all valid email addresses.									- valid_emails
+
+	**/
 
 /*	public function index()
 *	{
@@ -91,10 +114,10 @@ class Goat extends CI_Controller {
 
 		if($this->session->userdata('username') != ''){
 			
-			$this->form_validation->set_rules('eartag_id','Tag ID','required|numeric|xss_clean|trim|is_unique[goat_profile.eartag_id]',
+			$this->form_validation->set_rules('eartag_id','Tag ID','required|integer|xss_clean|trim|is_unique[goat_profile.eartag_id]',
 			array(
 				'required' => '{field} is required',
-				'numeric' => 'Not a valid {field} provided. Only digits are allowed',
+				'integer' => '{field} must contain an integer',
 				'is_unique' => '{field} is already existed',
 				)
 			);
@@ -102,43 +125,47 @@ class Goat extends CI_Controller {
 			$this->form_validation->set_rules('eartag_color','Tag Color','required|xss_clean|trim|alpha_spaces',
 				array(
 					'required' => '{field} is required',
-					'alpha_spaces'=> 'The {field} field may only contain alphabetical characters and space.',
+					'alpha_spaces'=> '{field} may only contain alphabetical characters and spaces',
 				)
 			);
 
-			$this->form_validation->set_rules('gender','Gender','required|xss_clean|trim',
+			$this->form_validation->set_rules('gender','Gender','required|xss_clean|trim|alpha_spaces',
 				array(
-					'required' => '{field} is required',
+					'required' 	=> '{field} is required',
+					'alpha_spaces'=> '{field} may only contain alphabetical characters and spaces',
 				)
 			);
 
 			$this->form_validation->set_rules('body_color','Body Color','required|xss_clean|trim|alpha_spaces',
 				array(
 					'required' => 'Body Color is required',
-					'alpha_spaces'=> 'The {field} field may only contain alphabetical characters and space.',
+					'alpha_spaces'=> '{field} may only contain alphabetical characters and spaces',
 
 				)
 			);
 
 			if($category === "birth"){
 
-				$this->form_validation->set_rules('birth_date','Birth Date','required|xss_clean|trim',
+				$this->form_validation->set_rules('birth_date','Birth Date','required|xss_clean|trim|check_date',
 					array(
-						'required' => '{field} is required',
+						'required' => "{field} is required",
+						"check_date"	=> "{field} is set incorrectly"
 					)
 				);
 		
-				$this->form_validation->set_rules('sire_id','Sire ID','xss_clean|trim|numeric|is_sire_exist[goat_profile.eartag_id]',
+				$this->form_validation->set_rules('sire_id','Sire ID','xss_clean|trim|integer|is_sire_exist[goat_profile.eartag_id]',
 					array(
 						'required' => '{field} is required',
 						'is_sire_exist' => '{field} do not exist',
+						"numeric" => "must contain only numbers.",	
 					)
 				);
 
-				$this->form_validation->set_rules('dam_id','Dam ID','xss_clean|trim|numeric|is_dam_exist[goat_profile.eartag_id]',
+				$this->form_validation->set_rules('dam_id','Dam ID','xss_clean|trim|integer|is_dam_exist[goat_profile.eartag_id]',
 					array(
 						'required' => '{field} is required',
 						'is_dam_exist' => '{field} do not exist',
+						"*"
 					)
 				);
 
@@ -147,7 +174,7 @@ class Goat extends CI_Controller {
 				$this->form_validation->set_rules('purchase_weight','Weight Purchase','xss_clean|trim|numeric',
 					array(
 						'required' 	=> '{field} is required',
-						'numeric'	=> "{field} must be a digit",
+						"numeric" => "must contain only numbers.",	
 					)
 				);
 
@@ -155,17 +182,18 @@ class Goat extends CI_Controller {
 					array(
 						'required' => '{field} is required',
 						'is_dam_exist' => '{field} must be a digit',
+						"numeric" => "must contain only numbers.",	
 					)
 				);
 
-				$this->form_validation->set_rules('purchase_date','Purchased Date','xss_clean|trim',
+				$this->form_validation->set_rules('purchase_date','Purchased Date','xss_clean|trim|check_date',
 					array(
 						'required' => '{field} is required',
+						"check_date"	=> "{field} is set incorrectly"
 					)
 				);
 
 				$this->form_validation->set_rules('purchase_from','Vendor','xss_clean|trim');
-
 
 
 			}
@@ -264,6 +292,7 @@ class Goat extends CI_Controller {
 				array(
 					'required' => 'Dam ID is required',
 					'is_dam_exist' => 'Do not exist as a {field}',
+					"integer" => "must contain an integer.",	
 				)
 			);
 
@@ -271,13 +300,14 @@ class Goat extends CI_Controller {
 				array(
 					'required' => 'Sire ID is required',
 					'is_sire_exist' => 'Sire do not exist',
+					"integer" => "must contain an integer.",	
 				)
 			);
 
 			$this->form_validation->set_rules('perform_date','Breed Date','required|xss_clean|trim|check_date',
 				array(
 					'required' => 'Breed Date is required',
-					'check_date' => "Incorrect date settings"
+					"check_date"	=> "{field} is set incorrectly",
  				)
 			);
 
@@ -394,15 +424,18 @@ class Goat extends CI_Controller {
 		$this->form_validation->set_rules('eartag_id', 'Tag ID', 'trim|required|numeric|is_exist[goat_profile.eartag_id]|xss_clean',array(
 			'is_exist' => '{field} do not exist',
 			'required' => '{field} is required',
+			"integer" => "must contain an integer",	
 		));
 
-		$this->form_validation->set_rules('cause', 'Caused of Loss', 'trim|required|xss_clean',array(
-			'required' => '{field} is required',
+		$this->form_validation->set_rules('cause', 'Caused of Loss', 'trim|required|xss_clean|manage_option',array(
+			'required' 			=> '{field} is required',
+			"manage_option"		=> "{field} is not a valid option",
+
 		));
 
 		$this->form_validation->set_rules('perform_date', 'Date of Loss', 'trim|required|xss_clean|check_date',array(
 			'required' => '{field} is required',
-			'check_date' => "Incorrect date settings"
+			"check_date"	=> "{field} is set incorrectly",
 		));
 
 
@@ -413,17 +446,32 @@ class Goat extends CI_Controller {
 		
 	}
 
+	public function manage_option($str){
+		switch ($str) {
+			case "Deceased":
+			case "Lost":
+			case "Stolen":
+
+				return TRUE;
+			
+			default:
+				return FALSE;
+		}
+	}
 
 	public function goat_sales(){
 		
-		$this->form_validation->set_rules('price_per_kilo', 'Price per Kilo', 'trim|required',
-			array("required" => "{field} is required")
+		$this->form_validation->set_rules('price_per_kilo', 'Price per Kilo', 'trim|required|numeric',
+			array(
+				"required" 	=> "{field} is required",
+				"numeric" => "must contain only numbers.",	 
+			)
 		);
 
 		$this->form_validation->set_rules('purchase_weight', 'Purchase Weight', 'trim|required|numeric',
 			array(
 				"required"	=> "{field} is required",
-				"numeric"	=> "{field} must be a digit"
+				"numeric" => "must contain only numbers.",	
 			)
 		);
 
@@ -434,9 +482,10 @@ class Goat extends CI_Controller {
 			)
 		);
 
-		$this->form_validation->set_rules('sold_to','Buyer Name','required|xss_clean|trim',
+		$this->form_validation->set_rules('sold_to','Buyer Name','required|xss_clean|trim|name_check',
 			array(
-				'required' => '{field} is required'
+				'required' 		=> '{field} is required',
+				"name_check"	=> "{field} is not a valid name",
  			)
 		);
 

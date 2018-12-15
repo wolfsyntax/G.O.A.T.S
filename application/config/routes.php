@@ -103,3 +103,5 @@ $route['manage/loss']['POST'] = 'goat/record_loss';
 
 //$route['welcome'] = 'sitemap/landing_page';
 $route['template'] = 'sessions';
+
+$route['form'] = "sessions/test";

@@ -20,6 +20,30 @@ class User extends CI_Controller {
 	 */
 
 
+	/**
+
+		must be at least _ characters in length.								- min_length
+		cannot exceed _ characters in length.									- max_length
+		must contain only numbers.												- numeric
+		must contain a decimal number.											- decimal
+		must contain an integer.												- integer
+		is required.															- required
+		must be exactly _ characters in length.									- exact_length
+		must contain a number less than _.										- less_than
+		must contain a number less than or equal to _.							- less_than_equal_to
+		must contain a number greater than or equal to _.						- greater_than_equal_to
+		must contain a number greater than _.									- greater_than
+		must be one of: _,_,_.													- inlist[_,_,_]
+		may only contain alphabetical characters.								- alpha
+		may only contain alpha-numeric characters.								- alpha_numeric
+		may only contain alpha-numeric characters and spaces.					- alpha_numeric_spaces
+		may only contain alpha-numeric characters, underscores, and dashes.		- alpha_dash
+		must contain a valid IP.												- valid_ip
+		must contain a valid email address.										- valid_email
+		must contain all valid email addresses.									- valid_emails
+
+	**/
+
 /*	public function index()
 *	{
 *		$this->load->view('welcome_message');
@@ -89,22 +113,27 @@ class User extends CI_Controller {
 		
 		if($this->session->userdata("username")){	
 
-			$this->form_validation->set_rules("phone", "Mobile number", "required|min_length[11]|max_length[13]|trim|xss_clean", array(
-					"required" => "Mobile number is required",
-					"min_length[11]" => "Mobile number must contain atleast 11 digit",
-					"max_length[13]" => "Mobile number must contain atleast 12 digit and a plus '+' sign",
+			$this->form_validation->set_rules("phone", "Mobile number", "required|trim|xss_clean|phone_check|max_length[13]", array(
+					"required"		=> "{field} is required",
+					"phone_check"	=> "{field} is not a valid phone number in the Philippines",
+					"max_length"	=> "{field} cannot exceed 13 characters in length including '+'."
+
 				)
 			);
 
-			$this->form_validation->set_rules("last_name", "Last name", "required|min_length[2]|max_length[128]|trim|xss_clean", array(
+			$this->form_validation->set_rules("last_name", "Last name", "required|name_check|trim|xss_clean|max_length[255]", array(
 					"required" => "Last name is required",
-					"min_length[2]" => "Last name must contain at least two (2) letters",
-					"max_length[128]"	=> "Last name exceeds the allowable length",
+					"name_check"	=> "{field} is not a valid and must be at least 2 characters in length.",
+					"max_length"	=> "{field} cannot exceed 255 characters in length.",
 				)
 			);
 
-			$this->form_validation->set_rules("first_name", "First name", "required|trim|xss_clean",
-				array("required" => "First name is required",)
+			$this->form_validation->set_rules("first_name", "First name", "required|trim|xss_clean|name_check|max_length[255]",
+				array(
+					"required" => "First name is required",
+					"name_check"	=> "{field} is not a valid and must be at least 2 characters in length.",
+					"max_length"	=> "{field} cannot exceed 255 characters in length.",					
+				)
 			);
 
 			$this->form_validation->set_error_delimiters("<small class='form-text text-danger'>", "</small>");
@@ -151,10 +180,10 @@ class User extends CI_Controller {
 		if($this->session->userdata("username")){
 
 			$this->form_validation->set_rules(
-				"passwd", "Password", "required|min_length[6]|trim|xss_clean",
+				"passwd", "Password", "required|min_length[8]|trim|xss_clean",
 				array(
 					"required" => "Password is required",
-					"min_length[6]" => "Password must contain atleast six (6) alpha numeric characters"
+					"min_length" => "{field} must be at least 8 characters in length.",
 				)
 			);
 
@@ -227,40 +256,43 @@ class User extends CI_Controller {
 	public function verify_signup()
 	{
 		
-		$this->form_validation->set_rules("username", "Username", "required|trim|is_unique[user_account.Username]|xss_clean|min_length[8]|max_length[255]",
+		$this->form_validation->set_rules("username", "Username", "required|trim|is_unique[user_account.Username]|xss_clean|min_length[8]|max_length[255]|regex_match[/[a-zA-Z0-9 ]/]",
 			array(
 				"required" => "{field} is required",
 				"is_unique" => "{field} is already taken",
-				"min_length[8]" => "{field} must contain atleast 8 alphanumeric characters",
+				"min_length" => "{field} must be at least 8 characters in length.",
+				"max_length"	=> "{field} cannot exceed 255 characters in length.."
 			)
 		);
 
-		$this->form_validation->set_rules("passwd", "Password", "required|min_length[6]|trim|xss_clean",
-			array(
-				"required" => "Password is required",
-				"min_length[6]" => "Password must contain atleast six (6) alpha numeric characters",
-			)
-		);
-
-		$this->form_validation->set_rules("phone", "Mobile number", "required|min_length[11]|max_length[13]|trim|xss_clean",
+		$this->form_validation->set_rules("passwd", "Password", "required|min_length[8]|trim|xss_clean",
 			array(
 				"required" => "{field} is required",
-				"min_length[11]"	=> "{field} must contain atleast 11 digit number",
-				"max_length[13]"	=> "{field} must contain up to 12 digit and a plus sign '+'",
+				"min_length" => "{field} must be at least 8 characters in length.",
 			)
 		);
 
-		$this->form_validation->set_rules("last_name", "Last name", "required|min_length[2]|max_length[255]|trim|xss_clean", array(
-				"required" => "Last name is required",
-				"min_length[2]" => "Last name must contain at least two (2) letters",
-				"max_length[255]" => "{field} exceeds the allowable characters",
+		$this->form_validation->set_rules("phone", "Mobile number", "required|trim|xss_clean|callback_phone_check|max_length[13]",
+			array(
+				"required" => "{field} is required",
+				"phone_check"	=> "{field} is not a valid phone number in the Philippines",
+				"max_length"	=> "{field} cannot exceed 13 characters in length including '+'"
+
 			)
 		);
 
-		$this->form_validation->set_rules("first_name", "First name", "required|trim|min_length[2]|max_length[255]|xss_clean", array(
+		$this->form_validation->set_rules("last_name", "Last name", "required|max_length[255]|trim|xss_clean|name_check", array(
+				"required"		=> "{field} is required",
+				"name_check"	=> "{field} is not a valid and must be at least 2 characters in length.",
+				"max_length"	=> "{field} cannot exceed 255 characters in length."
+
+			)
+		);
+
+		$this->form_validation->set_rules("first_name", "First name", "required|trim|xss_clean|name_check|max_length[255]", array(
 				'required' => 'First name is required',
-				'min_length[2]'	=> '{field} must contain atleast 2 characters from a-z',
-				"max_length[255]" => "{field} exceeds the allowable characters",
+				"name_check"	=> "{field} is not a valid and must be at least 2 characters in length.",
+				"max_length"	=> "{field} cannot exceed 255 characters in length."
 			)
 		);
 
@@ -328,8 +360,7 @@ class User extends CI_Controller {
 	public function login()
 	{
 
-		php_uname('n');
-
+		//php_uname('n');
 
 		//echo validation_errors('<span class="error">', '</span>');
 		if($this->session->userdata("username") == ""){
@@ -348,9 +379,10 @@ class User extends CI_Controller {
 
 	public function validate_login(){
 
-		$this->form_validation->set_rules("username", "Username", "trim|required|xss_clean", array(
+		$this->form_validation->set_rules("username", "Username", "trim|required|xss_clean|min_length[8]", array(
 			'required' => '{field} is required',
 			'xss_clean' => '{field} is not valid',
+			"min_length[8]"	=> "{field} must contain atleast 8 characters",
 		));
 
 		$this->form_validation->set_rules("passwd", "Password", "trim|required|xss_clean", array(
@@ -432,7 +464,7 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules(
 			"passwd", "Password", "required|min_length[8]|trim|xss_clean", array(
 				"required" => "Password is required",
-				"min_length[8]" => "Password must contain atleast eight (8) alpha numeric characters"
+				"min_length[8]"	=> "{field} must contain atleast 8 characters",
 			)
 		);
 
@@ -496,6 +528,35 @@ class User extends CI_Controller {
 
 		}
 	}	
+
+/**
+	public function name_check($str){
+		
+		if(preg_match("/^([a-zA-Z]{2,}\s*){1,}$/", $str)){
+			
+			return TRUE;			
+
+		} else {
+
+			return FALSE;
+
+		}
+
+	}
+**/
+	public function phone_check($str){
+		
+		if (preg_match("/^(\+63|0)9[0-9]{9}$/",$str)) {
+	
+			return TRUE;
+
+		} else {
+		
+			return FALSE;
+
+		}
+
+	}
 
 	public function send_email(){
 		//echo gethostname(); // may output e.g,: sandie
