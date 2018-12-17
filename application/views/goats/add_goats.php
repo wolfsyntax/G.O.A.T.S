@@ -8,7 +8,7 @@
 						<span class="text-muted">Add Goats By Birth</span>
 					</div>
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/new/birth',array('class'=>'form p-sm-2 p-md-5')); ?>
+						<?= form_open(base_url().'goats/new/birth',array('class'=>'form p-sm-2 p-md-5',"onsubmit"=>"return check_form(this);")); ?>
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2">Tag ID <span class="text-danger">*</span></label>								
 								<div class="col-8 col-sm-8 col-md-10">
@@ -58,8 +58,8 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Birth Date <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="date" name="birth_date" value="<?= set_value('birth_date');?>" placeholder="Date of Birth" class="form-control">
-									<?= (form_error('birth_date')	!= "" ? form_error('birth_date') : ''); ?>	
+									<input type="date" name="birth_date" value="<?= set_value('birth_date');?>" placeholder="Date of Birth" class="form-control" onchange="check_date_format(this);">
+									<span id="date_checker"><?= (form_error('birth_date')	!= "" ? form_error('birth_date') : ''); ?></span>	
 								</div>
 							</div>
 
@@ -108,7 +108,7 @@
 							</div>
 
 							<div class="form-row p-2">
-								<input type="submit" class="btn btn-success col-12 col-sm-6 col-md-3 offset-md-9 offset-sm-6" value="Add Goat">
+								<input type="submit" class="btn btn-success col-12 col-sm-6 col-md-3 offset-md-9 offset-sm-6" value="Add Goat" id="submit_btn" name="submit">
 							</div>
 
 

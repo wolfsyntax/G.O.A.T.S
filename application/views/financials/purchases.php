@@ -11,7 +11,7 @@
 					</div>
 					
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/new/purchase',array('class'=>'form p-5')); ?>
+						<?= form_open(base_url().'goats/new/purchase',array('class'=>'form p-5',"onsubmit"=>"return check_form(this);")); ?>
 
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
@@ -71,8 +71,8 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-12 col-sm-3 col-md-2 col-lg-2">Purchase Date <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="date" name="purchase_date" value="<?= set_value('purchase_date'); ?>" placeholder="Date of Purchase" class="form-control">
-									<?= (form_error('purchase_date') != "" ? form_error('purchase_date') : ''); ?>		
+									<input type="date" name="purchase_date" value="<?= set_value('purchase_date'); ?>" placeholder="Date of Purchase" class="form-control" onchange="check_date_format(this);">
+									<span id="date_checker"><?= (form_error('purchase_date') != "" ? form_error('purchase_date') : ''); ?></span>
 								</div>
 							</div>
 
@@ -114,7 +114,7 @@
 
 							<div class="form-row p-1 float-right w-100">
 								<span class="col clearfix"></span>
-								<input type="submit" class="btn btn-success col-3" value="Add Goat">
+								<input type="submit" class="btn btn-success col-3" value="Add Goat" name="submit">
 							</div>
 
 

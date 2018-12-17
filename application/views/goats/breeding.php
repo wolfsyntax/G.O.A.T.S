@@ -11,7 +11,7 @@
           </div>
           
           <div class="card-body p-2">
-          <?= form_open(base_url().'breed/verify', array('class'=> 'form p-3')); ?>
+          <?= form_open(base_url().'breed/verify', array('class'=> 'form p-3',"onsubmit"=>"return check_form(this);")); ?>
             <div class="form-group row"> 
               <label class="col-lg-2 col-form-label form-control-label">Sire ID</label>                           
                     
@@ -44,8 +44,8 @@
             <div class="form-group row">
               <label for="" class="col-lg-2 col-form-label form-control-label">Breeding Date</label>
               <div class="col">
-                <input class="form-control" type="date" value="<?= set_value('perform_date');?>" id="" placeholder="yyyy-mm-dd" name="perform_date">
-                <?= (form_error('perform_date') != "" ? form_error('perform_date') : ''); ?>
+                <input class="form-control" type="date" value="<?= set_value('perform_date');?>" id="" placeholder="yyyy-mm-dd" name="perform_date" onchange="check_date_format(this);">
+                <span id="date_checker"><?= (form_error('perform_date') != "" ? form_error('perform_date') : ''); ?></span>
               </div>
             </div>
 
@@ -68,7 +68,7 @@
 
             <div class="form-row ">
               <span class="col clearfix"></span>
-              <input type="submit" class="btn btn-success col-sm-12 col-md-3 offset-md-9" value="Add Breeding">
+              <input type="submit" class="btn btn-success col-sm-12 col-md-3 offset-md-9" value="Add Breeding" name="submit">
             </div>
 
           <?= form_close();?>  

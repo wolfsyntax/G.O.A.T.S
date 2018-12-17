@@ -8,7 +8,7 @@
 						<h3>Manage Loss</h3>
 					</div>
 					<div class="card-body p-2">
-						<?= form_open(base_url().'manage/loss',array('class'=>'form p-sm-1 p-md-5')); ?>
+						<?= form_open(base_url().'manage/loss',array('class'=>'form p-sm-1 p-md-5',"onsubmit"=>"return check_form(this);")); ?>
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
 							</div>
@@ -43,8 +43,8 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Date of Loss <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="date" name="loss_date" value="<?= set_value('loss_date'); ?>" placeholder="Date of Loss" class="form-control">
-									<?= (form_error('loss_date')	!= "" ? form_error('loss_date') : ''); ?>	
+									<input type="date" name="loss_date" value="<?= set_value('loss_date'); ?>" placeholder="Date of Loss" class="form-control" onchange="check_date_format(this);">
+									<span id="date_checker"><?= (form_error('loss_date')	!= "" ? form_error('loss_date') : ''); ?></span>
 								</div>
 							</div>
 
@@ -57,7 +57,7 @@
 							</div>
 
 							<div class="form-row p-1">
-								<input type="submit" class="btn btn-success col-12 col-sm-6 col-md-3 col-lg-2 offset-md-9 offset-sm-6 offset-lg-10" value="Submit Loss">
+								<input type="submit" class="btn btn-success col-12 col-sm-6 col-md-3 col-lg-2 offset-md-9 offset-sm-6 offset-lg-10" value="Submit Loss" name="submit">
 
 							</div>								
 						<?= form_close();?>

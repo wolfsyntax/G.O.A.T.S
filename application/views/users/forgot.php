@@ -16,7 +16,7 @@
 								<div class="row">
 									<div class="col-auto"><span class="text-muted">Please enter your email to continue</span></div>
 								</div>
-								<?= form_open(base_url().'forgot/identify',array('class' => 'mt-2')) ?>
+								<?= form_open(base_url().'forgot/identify',array('class' => 'mt-2',"onsubmit"=>"return check_form(this);")) ?>
 									<div class="row">
 										<div class="col-12">
 											<div class="form-group">
@@ -29,9 +29,7 @@
 									</div>
 									<div class="row pull-right">
 										<div class="d-inline-block">
-											<button type="submit" class="btn btn-sm btn-success col-12 float-right d-inline-block" >
-												&emsp;Search&emsp;
-											</button>
+											<input type="submit" class="btn btn-sm btn-success col-12 float-right d-inline-block" name="submit" value="Search">
 										</div>
 										<div class="col-2">
 											<a href="<?= base_url(); ?>login" class="btn btn-dark btn-sm">Cancel</a>

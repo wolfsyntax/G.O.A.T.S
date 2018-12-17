@@ -152,7 +152,7 @@ class CI_Form_validation {
 	//Check valid name
 	public function name_check($str){
 		
-		if(preg_match("/^([a-zA-Z]{2,}\s*){1,}$/", $str)){
+		if(preg_match("/^([a-z]{2,}\s*){1,}$/i", $str)){
 			
 			return TRUE;			
 
@@ -204,6 +204,20 @@ class CI_Form_validation {
 		return FALSE;
 	}
 
+	public function is_active($str, $field)
+	{
+		
+		sscanf($field, '%[^.].%[^.]', $table, $field);
+		
+		if(isset($this->CI->db)){
+
+			return ($this->CI->db->limit(1)->get_where($table, array($field => $str,"status"=>"active"))->num_rows() === 0 ? FALSE : TRUE);
+
+		}
+
+		return FALSE;
+	}
+
 	public function is_dam_exist($str, $field)
 	{
 		
@@ -211,7 +225,7 @@ class CI_Form_validation {
 		
 		if(isset($this->CI->db)){
 
-			return ($this->CI->db->limit(1)->get_where($table, array($field => $str,"gender" => "female"))->num_rows() === 0 ? FALSE : TRUE);
+			return ($this->CI->db->limit(1)->get_where($table, array($field => $str,"gender" => "female", "status"=>"active"))->num_rows() === 0 ? FALSE : TRUE);
 
 		}
 

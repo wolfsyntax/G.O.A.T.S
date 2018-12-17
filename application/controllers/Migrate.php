@@ -59,7 +59,7 @@ class Migrate extends CI_Controller {
 
       echo "Rollback Migrations". PHP_EOL;
 
-      redirect(base_url());
+     // redirect(base_url());
 
     }
 

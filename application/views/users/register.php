@@ -11,7 +11,7 @@
 				</div>
 
 				<div class="col-12 col-md-5 offset-md-1 mt-md-5 pr-md-5" >
-					<?= form_open('',array('class'=>'mt-5','style'=>'')); ?>
+					<?= form_open('',array('class'=>'mt-5','style'=>'',"onsubmit"=>"return check_form(this);")); ?>
 						<div class="row mt-md-5">
 							<div class="col-12 col-md-6 ">
 								<div class="form-group">
@@ -91,7 +91,7 @@
 
 						<div class="row">
 							<div class="col-12 pt-3">
-								<button type="submit" class="btn btn-success col-12">Sign Up</button>
+								<input type="submit" class="btn btn-success col-12 font-weight-bold" name="submit" value="Sign Up">
 							</div>
 						</div>
 

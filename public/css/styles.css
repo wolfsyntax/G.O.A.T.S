@@ -10,6 +10,72 @@
 
 }
 
+.no-icon-menu {
+
+  padding-top: 12px !important;
+  padding-bottom: 15px;
+  padding-right: 10px;
+/*  padding-right: -10px; */
+  left: 0px;
+}
+
+.icon-menu {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  padding-right: -20px;
+  position: relative;
+}
+
+.icon-menu span.badge-icon {
+  position: absolute !important;
+  top: 12px;
+  left: 16px;
+  padding-right: -20px;
+  display: inline-block;
+  padding: 0.25em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;  
+}
+
+@media screen and (max-width: 767px) {
+
+  .icon-menu {
+    padding-top: 25px;
+    padding-bottom: 15px;
+    padding-right: -100px;
+  }
+
+  .no-icon-menu {
+    padding-top: 21px !important;
+    padding-bottom: 15px;    
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .icon-menu .badge {
+
+    position: absolute;
+    top: 15px;
+    right: 28px !important;
+    display: none;
+    color: red !important;
+
+  }
+
+  .icon-menu i {
+    margin-right: -10px !important; 
+  }
+
+
+}
+
 #gmgt .popover-header {background:  #E74C3C; border-radius: 0;}
 
 .card-ubuntu {
@@ -110,7 +176,7 @@ a:hover {
   color: #fff !important;
 }
 
-
+/**
 .badge-wrapper {
   position: relative !important;
 }
@@ -153,7 +219,7 @@ a:hover {
      border-radius: 50%;
 }
 
-
+**/
 
 /*Now the CSS*/
 * {margin: 0; padding: 0;}

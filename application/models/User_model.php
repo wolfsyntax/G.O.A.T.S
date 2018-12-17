@@ -37,7 +37,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				if($query->num_rows() == 1){
 					
 					$this->session->unset_userdata('user_id');
-					$this->session->unset_userdata('user_email');
 					$this->session->unset_userdata('username');
 					$this->session->unset_userdata('user_fname');
 					$this->session->unset_userdata('user_lname');
@@ -51,13 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						
 						//Case Sensitive: $row->field_name, field_name is case-sensitive
 
-						$this->session->set_userdata('user_email',$row->email);
 						$this->session->set_userdata('username',$row->username);
 						$this->session->set_userdata('user_id',$row->user_id);
 						$this->session->set_userdata('user_fname',$row->first_name);
 						$this->session->set_userdata('user_lname',$row->last_name);
-						$this->session->set_userdata('user_phone',$row->phone);
-						$this->session->set_userdata('farm_name',$row->farm_name);
+						$this->session->set_userdata('user_phone',$row->phone_number);
 						$this->session->set_userdata('user_type',$row->account_type);
 
 						$this->session->set_userdata('notif', 1);

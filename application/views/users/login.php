@@ -55,18 +55,15 @@
 					</div>
 
 					<div class="col-12 col-sm-12 col-lg-12">
-						<div class="container-fluid">
-							<div class="clearfix">&emsp;</div>
+						<div class="container pt-3">
 							<div class="row">
-								<div class="col-12 col-sm-6 col-lg-6">
-									<a href="register" class="nav-link font-weight-bold text-sm-center text-uppercase text-dark" title="Create Account" tabindex="1"><small>Create Account</small></a>
+								<div class="col-12 col-md-6 col-lg-6 text-center">
+									<a href="register" class="nav-link font-weight-bold text-uppercase text-dark" title="Create Account" tabindex="1"><small>Create Account</small></a>
 								</div>
-							
-								<div class="col-12 col-sm-6 col-lg-6">
+								<div class="col-12 col-md-6 col-lg-6 text-center">
 									<a href="<?= base_url(); ?>forgot" class="nav-link font-weight-bold text-uppercase text-dark" title="Forgot Password?" tabindex="0"><small class="align-center">Forgot Password?</small></a>
 								</div>
-							</div>							
-
+							</div>
 						</div>
 					</div>
 				</div>

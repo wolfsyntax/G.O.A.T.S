@@ -74,6 +74,7 @@ class Sessions extends CI_Controller {
 		must contain all valid email addresses.									- valid_emails
 
 	**/
+	/**
 	public function test(){
 
 		$data["body"] = "components/template";
@@ -90,5 +91,6 @@ class Sessions extends CI_Controller {
 
 
 	}
+	**/
 }
 ?>

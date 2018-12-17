@@ -45,20 +45,18 @@ class Sitemap extends CI_Controller {
 			
 		$data["title"] = "Home";
 		$data["body"] = "sitemaps/index";
-		$this->load->view("layouts/application", $data);		
-/**		
+				
+	
 		if($this->session->userdata('username') != ''){
 			
 			redirect('dashboard');
 
 		}else{
 
-			$data["title"] = 'Home';
-			$data["body"] = 'sitemaps/index';
-			$this->load->view('layouts/application',$data);
+			$this->load->view("layouts/application", $data);
 
 		}
-**/
+
 	}
 
 
@@ -72,9 +70,10 @@ class Sitemap extends CI_Controller {
 	}
 
 	public function dashboard(){
-
+		
 		if($this->session->userdata("username") != ""){
-
+			
+			
 			$data["title"] = "Dashboard";
 			$data["body"] = "sitemaps/dashboard";
 

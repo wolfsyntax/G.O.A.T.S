@@ -13,13 +13,13 @@
 
 	<link rel="stylesheet" href="<?= base_url()?>public/css/app.css" >
 	<style>
-		* {
+		h1, h2, h3, h4, h5, h6, div, p{
 			font-family: 'Ubuntu', sans-serif;
 		}
 
 	</style>
 </head>
-<body id="back2top">
+<body id="back2top" onload="startClock();initpage();">
 
 	<?php if($this->config->item('base_timestamp') < time()) {?>
 	<main role="main">
@@ -163,6 +163,45 @@
 
 	<script>
 
+		function check_date_format(fields){
+			var field = fields.value.split("-")[0].length;			
+			if(field == 4 || fields.value == ""){
+
+				$("#date_checker").html("");
+				$("[name='submit'").attr("disabled", false);
+
+			}else{
+				
+				$("#date_checker").html("Incorrect format or value");
+				$("[name='submit']").attr("disabled", true);
+			}
+		}
+
+		function check_form(form){
+
+			form.submit.disabled = true;
+//			if(flag == 0)
+			form.submit.value = "Please wait.."; 
+//			else if(flag == 1)
+//				form.submit.value = "";
+		}
+
+		function startClock() {
+		    var now = new Date();
+		    var h = now.getHours();
+		    var m = now.getMinutes();
+		    var s = now.getSeconds();
+		    m = checkTime(m);
+		    s = checkTime(s);
+		    document.getElementById('clock').innerHTML =
+		    h + ":" + m + ":" + s;
+		    var t = setTimeout(startClock, 500);
+		}
+		function checkTime(i) {
+		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+		    return i;
+		}
+	
 	/**	$(function () {
 			$("#gender").on("change", function() {
 		    	// Check the option value for gender is "male" then enable checkbox, otherwise disable the checkbox

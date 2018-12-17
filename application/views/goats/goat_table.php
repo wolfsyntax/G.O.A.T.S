@@ -1,4 +1,4 @@
-<div class="mb-5">
+<div class="mb-5 mt-5 px-5">
   <table id="breedingTable"  class="table table-striped table-bordered" style="width:100% top: 120px;">
     <thead>
       <tr>

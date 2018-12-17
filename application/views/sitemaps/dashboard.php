@@ -13,18 +13,10 @@
       </section>
 
       <section class="col-12 bg-light px-2" style="margin-top: 80px !important;">
-        
-        <div class="alert alert-warning alert-dismissible fade show p-2" role="alert">
-          <strong>Pro Tip!</strong> If you want to update your profile details and password&emsp;<a class="btn btn-sm btn-success" href="<?= base_url()?>profile/settings"><span class="fa fa-pencil"></span>&nbsp;Edit Profile</a>
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
+        <?= ($this->session->flashdata('item') ? $this->session->flashdata('item') : ''); ?>
       </section>
 
       <section class="col-12 p-0">
-        <?= ($this->session->flashdata('item')) ? $this->session->flashdata('item') : ''; ?>
         <?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
       </section>
 

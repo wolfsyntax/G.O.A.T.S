@@ -10,23 +10,29 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li-->
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard" style="top: 10px"> <i class="fa fa-user-circle" ></i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;<?= $this->session->userdata('user_fname'); ?></span></a>
-      </li>
-
-      <li class="nav-item" style="">
-        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard" style="position: relative; top: -10px;">
-          <?php if($this->session->userdata('notif') == 1){ ?>
-            <i class="fa-stack fa fa-bell-o badge-wrapper" data-count="100" >
-          <?php } else { ?>
-            <i class="fa-stack fa-bell badge-wrapper" data-count="100">
-          <?php } ?>
-            </i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;Notifications</span>
+        <a class="nav-link" href="<?= base_url() ?>dashboard" title="Dashboard"> 
+          <i class="fa fa-user-circle fa-lg no-icon-menu"></i>
+          <span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;<?= $this->session->userdata('user_fname'); ?></span></a>
         </a>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item" style="width: 40px !important;">
+        <a class="nav-link icon-menu" href="<?= base_url() ?>" title="Notifications">
+          <?php if($this->session->userdata('notif') == 1){ ?>
+            <i class="fa-stack fa fa-bell-o fa-lg">
+          <?php } else { ?>
+            <i class="fa-stack fa-bell">
+          <?php } ?>
+            </i>
+            
+          <span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">Notifications</span>
+          <span class="badge-icon bg-warn bg-danger text-truncate " style="width: 32px;">99+</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown p-0">
         <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-cog text-dark"></i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;Settings</span>
+          <i class="fa fa-cog fa-lg" style="left: -10px; padding-top: 12px; padding-right: 10px;"></i><span class="d-block-inline d-sm-block-inline d-md-block-inline d-lg-none ">&emsp;Settings</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <p class="dropdown-item" href="">Signed in as<br/><strong class="text-dark"><?= $this->session->userdata('username'); ?></strong></p>

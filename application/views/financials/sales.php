@@ -8,7 +8,7 @@
 					</div>
 					
 					<div class="card-body p-2">
-						<?= form_open(base_url().'goats/sales', array('class'=>'form p-5','style'=>''));?>
+						<?= form_open(base_url().'goats/sales', array('class'=>'form p-5','style'=>'',"onsubmit"=>"return check_form(this);"));?>
 							
 							<div class="form-row p-1">
 								<?= ($this->session->flashdata('goat') ? $this->session->flashdata('goat') : ''); ?>
@@ -79,7 +79,7 @@
 
 							<div class="form-row p-1 float-right w-100">
 								<span class="col clearfix"></span>
-								<input type="submit" class="btn btn-info col-3" value="Add Sale">
+								<input type="submit" class="btn btn-info col-3" value="Add Sale" name="submit">
 							</div>
 
 
