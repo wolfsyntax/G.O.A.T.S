@@ -4,7 +4,7 @@
 	<div class="row mt-sm-5 mt-2 clearfix"></div>
 	<div class="row">
 		<div class="col">
-			<?= Carbon\Carbon::now(); ?>
+			
 			<section class="bg-dark" style="">
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height: 480px;">
 					<ol class="carousel-indicators text-dark">

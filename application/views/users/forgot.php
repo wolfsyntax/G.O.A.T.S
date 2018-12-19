@@ -29,7 +29,7 @@
 									</div>
 									<div class="row pull-right">
 										<div class="d-inline-block">
-											<input type="submit" class="btn btn-sm btn-success col-12 float-right d-inline-block" name="submit" value="Search">
+											<input type="submit" class="btn btn-sm btn-success col-12 float-right d-inline-block" name="submit" value="Search" id="forgot_init">
 										</div>
 										<div class="col-2">
 											<a href="<?= base_url(); ?>login" class="btn btn-dark btn-sm">Cancel</a>

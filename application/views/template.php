@@ -2,6 +2,8 @@
     <?= Carbon\Carbon::createFromFormat("Y-m-d H:i:s", '2018-12-8 12:30:00', "Asia/Manila")->diffForHumans()?>
 
 
+<?= Carbon\Carbon::now(); ?>
+
 https://dba.stackexchange.com/questions/36573/how-to-model-inheritance-of-two-tables-mysql
 
 

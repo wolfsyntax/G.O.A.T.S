@@ -53,7 +53,7 @@
 						
 						<div class="row mb-4">
 							<div class="col-12">
-								<button type="submit" class="btn btn-primary col-12" name="submit">Save Details</button>
+								<input type="submit" class="btn btn-primary col-12" name="submit" value="Save Details" id="mod_prof_info">
 							</div>
 						</div>
 					<?php echo form_close(); ?>
@@ -89,7 +89,7 @@
 
 						<div class="row">
 							<div class="col-12">
-								<input name="submit" type="submit" class="btn btn-success col-12" value="Change Password">
+								<input name="submit" type="submit" class="btn btn-success col-12" value="Change Password" id="mod_prof_pass">
 							</div>
 						</div>
 

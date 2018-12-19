@@ -1,20 +1,28 @@
 <nav class="navbar-light bg-dark">
-  <header class="container-fluid py-2">
+  <header class="container-fluid py-3">
     <div class="row d-flex justify-content-between align-items-center">
       <div class="col-6 d-flex justify-content-start align-items-center">
-        <a class="text-white nav-link" href="#">Home</a>
-        <a class="text-white nav-link" href="#">About</a>
-        <a class="text-white nav-link" href="#">FAQ</a>
-        <a class="text-white nav-link" href="#">Contact</a>
+        <a class="text-white nav-link p-2 p-md-2" href="#">Home</a>
+        <a class="text-white nav-link p-2 p-md-2" href="#">About</a>
+        <a class="text-white nav-link p-2 p-md-2" href="#">FAQ</a>
+        <a class="text-white nav-link p-2 p-md-2" href="#">Contact</a>
       </div>
 
       <div class="col-6 d-flex justify-content-md-end align-items-center">
-        <a class="nav-link text-white" href="<?= base_url(); ?>login">Login</a>
-        <a class="nav-link text-white" href="<?= base_url();?>register">Sign up</a>
+        <a class="nav-link text-white p-2 p-md-2" href="<?= base_url(); ?>login">Login</a>
+        <a class="nav-link text-white p-2 p-md-3" href="<?= base_url();?>register">Sign up</a>
       </div>
     </div>
   </header>
-  
-  <marquee class="bg-dark text-white">Do you need a hosting site? <a href="https://www.000webhost.com/1127428.html" class="nav-link d-inline text-white ml-0">Signup here</a></marquee>
-  
+  <div class="container-fluid">
+    <div class="row" style="margin-top: -5px;">
+      
+      <div class="col-2 col-md-1 text-center p-0 text-white font-weight-bold" id="clock">
+        &emsp;
+      </div>
+      <div class="col bg-dark py-1 pr-2">
+        <marquee class="bg-light text-dark mr-1">Do you need a hosting site? <a href="https://www.000webhost.com/1127428.html" class="nav-link d-inline text-info ml-0">Signup here</a>&nbsp;</marquee>
+      </div>
+    </div>
+  </div>
 </nav>

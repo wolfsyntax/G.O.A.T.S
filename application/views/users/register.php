@@ -27,7 +27,7 @@
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label class="col-form-label-sm mb-0">Last Name: <span class="text-danger">*</span></label>							
-									<input type="text" class="form-control" name = "last_name" id="" aria-describedby="" placeholder="Last name" value="<?=set_value('last_name');?>" autocomplete="off">
+									<input type="text" class="form-control" name = "last_name" id="" aria-describedby="" placeholder="Last name" value="<?=set_value('last_name');?>" required>
 
 									
 									<?= (form_error('last_name')	!= "" ? form_error('last_name') : ''); ?>							
@@ -39,7 +39,7 @@
 							<div class="col-12 col-md-12">
 								<div class="form-group">
 									<label class="col-form-label-sm mb-0">Username: <span class="text-danger">*</span></label>							
-									<input type="text" class="form-control" name = "username" id="" aria-describedby="" placeholder="Username" value="<?= set_value('username');?>" autocomplete="off">
+									<input type="text" class="form-control" name = "username" id="" aria-describedby="" placeholder="Username" value="<?= set_value('username');?>" required>
 
 									
 									<?= (form_error('username')	!= "" ? form_error('username') : ''); ?>			
@@ -53,7 +53,7 @@
 							<div class="col-12">
 								<div class="form-group">
 									<label class="col-form-label-sm mb-0">Mobile number: <span class="text-danger">*</span></label>							
-									<input type="text" class="form-control" name = "phone" id="" aria-describedby="" placeholder="Mobile number" value="<?= set_value('phone');?>" autocomplete="off">
+									<input type="text" class="form-control" name = "phone" id="" aria-describedby="" placeholder="Mobile number" value="<?= set_value('phone');?>" required>
 									
 
 									<?= (form_error('phone')	!= "" ? form_error('phone') : ''); ?>							
@@ -64,7 +64,7 @@
 							<div class="col-12 col-md-6">
 								<div class="form-group">
 									<label class="col-form-label-sm mb-0 pt-0">Password: <span class="text-danger">*</span></label>							
-									<input type="password" class="form-control" name = "passwd" id="" aria-describedby="" placeholder="New Password" value="<?= set_value('passwd');?>">
+									<input type="password" class="form-control" name = "passwd" id="" aria-describedby="" placeholder="New Password" value="<?= set_value('passwd');?>" required>
 
 									
 									<?= (form_error('passwd')	!= "" ? form_error('passwd') : ''); ?>		
@@ -76,7 +76,7 @@
 							<div class="col-12 col-md-6">
 								<div class="form-group text-dark">
 									<label class="col-form-label-sm mb-0 pt-0">Confirm Password: <span class="text-danger">*</span></label>							
-									<input type="password" class="form-control" name = "conf_passwd" id="" aria-describedby="" placeholder="Re-Type New Password" value="<?= set_value('conf_passwd');?>">
+									<input type="password" class="form-control" name = "conf_passwd" id="" aria-describedby="" placeholder="Re-Type New Password" value="<?= set_value('conf_passwd');?>" required>
 
 								
 									<?= (form_error('conf_passwd')	!= "" ? form_error('conf_passwd') : ''); ?>		
@@ -91,7 +91,7 @@
 
 						<div class="row">
 							<div class="col-12 pt-3">
-								<input type="submit" class="btn btn-success col-12 font-weight-bold" name="submit" value="Sign Up">
+								<input type="submit" class="btn btn-success col-12 font-weight-bold btn-js" name="submit" value="Sign Up" id="reg_submit">
 							</div>
 						</div>
 
@@ -101,7 +101,7 @@
 									<div class="clearfix">&emsp;</div>
 									<div class="row pt-3 pl-0">
 									
-										<div class="col-12 col-sm-12 col-lg-12">
+										<div class="col-12 col-sm-12 col-lg-12 text-center text-md-left">
 											Already have an account?<?= anchor(base_url().'login','Login',array("class"=>"nav-link font-weight-normal text-capitalize text-dark d-inline","title" => "Login Account",)); ?>
 										</div>
 									</div>							

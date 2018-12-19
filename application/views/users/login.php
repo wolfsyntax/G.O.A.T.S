@@ -15,7 +15,7 @@
 
 				<div class="row mt-2">
 					<div class="col-12 col-sm-12 col-lg-12 h-100 px-0">
-						<?php echo form_open('',array('class'=>'mt-md-5','style'=>'')); ?>
+						<?php echo form_open('',array('class'=>'mt-md-5','style'=>'',"onsubmit"=> "return check_form(this);")); ?>
 							<div class="container-fluid">
 								<?= ($this->session->flashdata('item') ? $this->session->flashdata('item') : ''); ?>
 								
@@ -45,7 +45,7 @@
 								    </div>
 
 								    <div class="col-12">
-								    	<button type="submit" class="btn btn-primary col-12">Log In</button>
+								    	<input type="submit" class="btn btn-primary col-12" name="submit" id="login_btn" value="Log In">
 								    </div>
 								</div>
 							</div>

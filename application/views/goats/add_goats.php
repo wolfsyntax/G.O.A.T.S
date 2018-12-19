@@ -12,7 +12,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2">Tag ID <span class="text-danger">*</span></label>								
 								<div class="col-8 col-sm-8 col-md-10">
-									<input type="text" name="eartag_id" placeholder="Tag ID"  class="form-control" value="<?= set_value('eartag_id');?>" />
+									<input type="text" name="eartag_id" placeholder="Tag ID"  class="form-control" value="<?= set_value('eartag_id');?>" required/>
 									<?= (form_error('eartag_id')	!= "" ? form_error('eartag_id') : ''); ?>	
 								</div>
 
@@ -20,13 +20,18 @@
 								<div class="col">
 									<div class="row px-3">
 										
-										<select name="eartag_color" id="tag_color_select" class="form-control col-11" placeholder="- Enter Tag Color -" required="" value="<?= set_value('eartag_color'); ?>">
+										<select name="eartag_color" id="tag_color_select" class="form-control col-11" placeholder="- Enter Tag Color -" required="" value="<?= set_value('eartag_color'); ?>" required>
 
-                                    		<option value="Brown">Brown</option>           
+ 	                                    	<option value="green">Green</option> 
+	                                    	<option value="yellow">Yellow</option>
+	                                    	<option value="orange">Orange</option>
+	                                    	<option value="blue">Blue</option>      
+	                                    		          
                         				</select>
                         				<input type="color" name="tag_picker" id="tagpicker" class="form-control col-1" onchange="tagColorPick(this.value);" >
                         			</div>
-                        				<?= (form_error('eartag_color')	!= "" ? form_error('eartag_color') : ''); ?>	
+                        			
+                        			<?= (form_error('eartag_color')	!= "" ? form_error('eartag_color') : ''); ?>	
 
 								</div>
 							</div>
@@ -34,7 +39,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Gender <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="gender" class="custom-select" id="gender">
+									<select name="gender" class="custom-select" id="gender" required>
 										<option>- Select a Gender -</option>
 										<option value="female">Female</option>
 										<option value="male">Male</option>
@@ -46,7 +51,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Body Color <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="body_color" id="body_color_select" class="form-control" placeholder="- Enter Body Color -" value="<?= set_value('body_color'); ?>">
+									<select name="body_color" id="body_color_select" class="form-control" placeholder="- Enter Body Color -" value="<?= set_value('body_color'); ?>" required>
 
                                     	<option value="Brown">Brown</option>           
                         			</select>
@@ -58,7 +63,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Birth Date <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="date" name="birth_date" value="<?= set_value('birth_date');?>" placeholder="Date of Birth" class="form-control" onchange="check_date_format(this);">
+									<input type="date" name="birth_date" value="<?= set_value('birth_date');?>" placeholder="Date of Birth" class="form-control" onchange="check_date_format(this);" required>
 									<span id="date_checker"><?= (form_error('birth_date')	!= "" ? form_error('birth_date') : ''); ?></span>	
 								</div>
 							</div>
@@ -74,7 +79,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Dam ID <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="dam_id" id="dam_id_select" class="form-control" placeholder="- Enter Dam ID -" value="<?= set_value('dam_id'); ?>">
+									<select name="dam_id" id="dam_id_select" class="form-control" placeholder="- Enter Dam ID -" value="<?= set_value('dam_id'); ?>" required>
 
                                     	<?php foreach($dam_record as $row){ ?>
                                     		<option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
@@ -88,7 +93,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Sire ID <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="sire_id" id="sire_id_select" class="form-control" placeholder="- Enter Sire ID -" value="<?= set_value('sire_id');?>">
+									<select name="sire_id" id="sire_id_select" class="form-control" placeholder="- Enter Sire ID -" value="<?= set_value('sire_id');?>" required>
 
                                     	<?php foreach($sire_record as $row){ ?>
                                     		<option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
@@ -102,7 +107,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-4 col-sm-4 col-md-2 col-lg-2">Is castrated ? <span class="text-danger">*</span></label>
 								<div class="col mt-2">
-									<input type="checkbox" name="is_castrated" value="" class="custom-checkbox" id="is_castrated" disabled="">
+									<input type="checkbox" name="is_castrated" value="" class="custom-checkbox" id="is_castrated" disabled="" >
 									<?= (form_error('is_castrated')	!= "" ? form_error('is_castrated') : ''); ?>	
 								</div>
 							</div>

@@ -20,16 +20,29 @@
 	</style>
 </head>
 <body id="back2top" onload="startClock();initpage();">
+	<?php  
+		//PC Name
+//		echo php_uname('n') . "<br/>"; 
 
-	<?php if($this->config->item('base_timestamp') < time()) {?>
+		//Year
+		$_year = date('Y');
+//		echo $_year . "<br/>";
+
+		?>
+
+	<?php if($this->config->item('base_timestamp') < time() && ($_year <= 2038 && $_year >= 1970)) {?>
 	<main role="main">
-
+		<!--i class="fa fa-spinner fa-pulse"></i-->
 		<a style="float: right" class="nav-link" id = "back2top-btn" onclick="scrollTops();"><i class="fa fa-angle-up fa-lg text-danger font-weight-bold"></i></a>
 
 		<?php $this->load->view($body); ?>
 	</main>
 
-	<?php } else { 
+	<?php } elseif ($_year > 2038) {
+		
+		echo "<h1>Please contact the developer for further update</h1>";
+
+	} else { 
 		show_404("sitemap/404.php"); //echo "<h1>To continue, Please set date and time correctly</h1>";
 	} ?>
 	<!--Starter Template-->
@@ -164,26 +177,84 @@
 	<script>
 
 		function check_date_format(fields){
-			var field = fields.value.split("-")[0].length;			
-			if(field == 4 || fields.value == ""){
+			
+			var fsplit 		= fields.value.split("-");
+			var msg = "Please enter a valid value. The field is incomplete or has invalid date";
 
-				$("#date_checker").html("");
-				$("[name='submit'").attr("disabled", false);
+			var flen 		= fields.value.length;
+			
+			var year_len	= fsplit[0].length;
 
-			}else{
+			var _year		= parseInt(fsplit[0]);
+			var _month		= parseInt(fsplit[1]);
+			var _day		= parseInt(fsplit[2]);
+			var flag 		= false;
+
+			//$("#date_checker").html("Input: " + flen);
+
+			if(_month < 0 && _month >= 13){
 				
-				$("#date_checker").html("Incorrect format or value");
-				$("[name='submit']").attr("disabled", true);
+				msg = "The field is incomplete or has invalid month";
+				flag = true;
+
 			}
+
+			if(_day < 0 && _day >= 32){
+				
+				msg = "The field is incomplete or has invalid date";
+				flag =true;
+
+			}
+
+			if(flen < 10 && flen > 10){
+				
+				msg = "The field is incomplete or has invalid date";
+				flag = true;
+
+			}
+
+			if(_year < 1970){
+				
+				msg = "The field has invalid year";
+				flag = true;
+
+			}
+
+			if(_year > 2038){
+				
+				msg = "Please contact the developer for further update of the system";
+				flag = true;
+
+			}
+			
+			if(!flag) msg = "";
+
+			$("#date_checker").html(msg);
+			$("[name='submit']").attr("disabled", flag);
+
+
+//			if(field == 4 || fields.value == ""){
+
+//				$("#date_checker").html("");
+//				$("[name='submit'").attr("disabled", false);
+
+//			}else{
+				
+//				$("#date_checker").html("Incorrect format or value");
+//				$("[name='submit']").attr("disabled", true);
+//			}
+
 		}
 
 		function check_form(form){
+			
+			var elem = "#"+form.submit.id;
+			
+			$(elem).attr('disabled','disabled');
+			$(elem).val("Please wait...");
+		//	form.submit.disabled = true;
+		//	form.submit.value = "Please wait...";
 
-			form.submit.disabled = true;
-//			if(flag == 0)
-			form.submit.value = "Please wait.."; 
-//			else if(flag == 1)
-//				form.submit.value = "";
 		}
 
 		function startClock() {
@@ -193,10 +264,11 @@
 		    var s = now.getSeconds();
 		    m = checkTime(m);
 		    s = checkTime(s);
-		    document.getElementById('clock').innerHTML =
+		    document.getElementById('clock').innerHTML = "" +
 		    h + ":" + m + ":" + s;
 		    var t = setTimeout(startClock, 500);
 		}
+
 		function checkTime(i) {
 		    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
 		    return i;

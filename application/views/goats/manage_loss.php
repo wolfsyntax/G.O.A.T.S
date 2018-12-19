@@ -16,7 +16,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Ear Tag ID <span class="text-danger">*</span></label>
 								<div class="col">
-									<select name="eartag_id" id="goat_id_select" class="form-control" placeholder="- Enter Ear Tag ID -" value="<?= set_value('eartag_id'); ?>">
+									<select name="eartag_id" id="goat_id_select" class="form-control" placeholder="- Enter Ear Tag ID -" value="<?= set_value('eartag_id'); ?>" required>
 
                                     	<?php foreach($goat_record as $row) {?>           
                                     		<option value="<?= $row->eartag_id; ?>"><?= $row->eartag_id; ?></option>
@@ -30,7 +30,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Caused of Loss<span class="text-danger font-weight-bold">*</span></label>
 								<div class="col">
-									<select name="cause" class="custom-select">
+									<select name="cause" class="custom-select" required>
 										<option value="">- Select a Cause -</option>
 										<option value="Deceased">Deceased</option>
 										<option value="Lost">Lost</option>
@@ -43,7 +43,7 @@
 							<div class="form-row p-1">
 								<label class="col-form-label-sm col-3 col-sm-3 col-md-2 col-lg-2">Date of Loss <span class="text-danger">*</span></label>
 								<div class="col">
-									<input type="date" name="loss_date" value="<?= set_value('loss_date'); ?>" placeholder="Date of Loss" class="form-control" onchange="check_date_format(this);">
+									<input type="date" name="loss_date" value="<?= set_value('loss_date'); ?>" placeholder="Date of Loss" class="form-control" onchange="check_date_format(this);" required>
 									<span id="date_checker"><?= (form_error('loss_date')	!= "" ? form_error('loss_date') : ''); ?></span>
 								</div>
 							</div>

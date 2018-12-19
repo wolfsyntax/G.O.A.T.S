@@ -59,19 +59,65 @@ class User extends CI_Controller {
 		$this->load->model("User_model");
 //		$this->load->driver(");
 
-		$config["protocol"] 	= "smtp";
-		$config["smtp_host"]	= "ssl://smtp.googlemail.com";
-		$config["smtp_port"] 	= 465;
-		$config["smtp_user"] 	= "mail.goats@gmail.com";
-		$config["smtp_pass"] 	= "09365621593";
-		$config["mailtype"]		= "html";
-		$config["charset"] 		= "utf-8";
+#		$config["protocol"] 	= "smtp";
+#		$config["smtp_host"]	= "ssl://smtp.googlemail.com";
+#		$config["smtp_port"] 	= 465;
+#		$config["smtp_user"] 	= "mail.goats@gmail.com";
+#		$config["smtp_pass"] 	= "09365621593";
+#		$config["mailtype"]		= "html";
+#		$config["charset"] 		= "utf-8";
+#
+#		$this->email->initialize($config);
+#		$this->email->set_newline('\r\n');
+
+#		$this->send_email();
+
+
+#		$this->load->library('email');
+
+#		$this->email->from('mail.goats@gmail.com', 'G.O.A.T.S');
+#		$this->email->to('jaysonalpe@gmail.com');
+		#$this->email->cc('another@another-example.com');
+		#$this->email->bcc('them@their-example.com');
+
+#		$this->email->subject('Email Test');
+#		$this->email->message('Testing the email class.');
+
+#		$this->email->send();
+
+
+		//Load email library
+		$this->load->library('email');
+
+		//SMTP & mail configuration
+		$config = array(
+		    'protocol'  => 'smtp',
+		    'smtp_host' => 'ssl://smtp.googlemail.com',
+		    'smtp_port' => 465,
+		    'smtp_user' => 'noreply.newrom@gmail.com',
+		    'smtp_pass' => '09365621593',
+		    'mailtype'  => 'html',
+		    'charset'   => 'utf-8'
+		);
 
 		$this->email->initialize($config);
+		$this->email->set_mailtype("html");
 		$this->email->set_newline('\r\n');
 
-		$this->send_email();
-		
+		//Email content
+		$htmlContent = '<h1>Sending email via SMTP server</h1>';
+		$htmlContent .= '<p>This email has sent via SMTP server from CodeIgniter application.</p>';
+
+		$this->email->to('recipient@example.com');
+		$this->email->from('sender@example.com','MyWebsite');
+		$this->email->subject('How to send email via SMTP server in CodeIgniter');
+		$this->email->message($htmlContent);
+
+		//Send email
+		//if($this->email->send()) echo "<h1>Email SENT</h1>";
+		//else echo "<h1>Email NOT SEND</h1>";
+		//echo $this->email->print_debugger();
+		//echo "<h1>EMAIL via constructor</h1>";		
 	}
 
 	public function index()
@@ -236,7 +282,6 @@ class User extends CI_Controller {
 	public function register()
 	{
 
-
 		if($this->session->userdata("username") == ""){
 			
 			$data["title"] = "Register";
@@ -325,7 +370,7 @@ class User extends CI_Controller {
 									</div>
 								</div>");
 
-
+				echo "<h1>SENDING EMAIL</h1>";
 				$this->email->from("mail.goats@gmail.com", "G.O.A.T.S");
 
 				$this->email->to($this->session->userdata("user_email"));
@@ -403,14 +448,13 @@ class User extends CI_Controller {
 
 			if($this->User_model->validate_login()){
 
-				$this->email->send();
 				$this->session->set_flashdata("item", '<div class="alert alert-warning alert-dismissible fade show p-2" role="alert">
           <strong>Pro Tip!</strong> If you want to update your profile details and password&emsp;<a class="btn btn-sm btn-success" href="<?= base_url()?>profile/settings"><span class="fa fa-pencil"></span>&nbsp;Edit Profile</a>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>');
-
+				
 				redirect('dashboard');
 
 			} else {
@@ -581,6 +625,16 @@ class User extends CI_Controller {
 		$this->email->subject("Access Login");
 				
 		$this->email->message("<h1>Alert!</h1><br/>Computer Name: ". php_uname('n') ."<br/>Timestamp: ". $date ."<br/>Username: ". $this->session->userdata("username"). "<br/>". $this->session->userdata("username"). "<br/><a href='https://www.facebook.com/wolf.syntax'>Admin</a>");
+
+		if($this->email->send()){
+
+			echo "<script>alert('Email Sent');</script>";
+
+		}else{
+
+			echo "<script>alert('Error: Email Not Sent');</script>";
+
+		}
 				
 	}
 }
